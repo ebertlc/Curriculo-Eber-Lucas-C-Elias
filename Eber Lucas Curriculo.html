@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="pt-BR">
+	<head>
+		<title>Curriculum Vitae</title>
+		<meta charset="utf-8">
+		<meta name="author" content="eBer_tlc">
+		<meta name="description" content="Curriculo de Eber Lucas Cerqueira Elias">
+		
+			<style>
+				body{
+					width: 90%;
+					margin: auto;              
+					font-family: Verdana, sans-serif;
+					color: black;
+				}
+				
+				h1, h2{
+					font-size: 18px;
+				}
+				h3{
+					font-size:17px;
+				}
+				p,li,lu{
+					font-size: 14px;
+				}
+			</style>
+	</head>
+	<body onload="complementos()">
+		</div>
+			<h1>Eber Lucas Cerqueira Elias</h1>
+				<p>Brasileiro, Solteiro, 21 anos<br>
+				Brazlandia - DF<br>
+				Telefone: 061 99562-6861<br>
+				E-mail: eberteclas@gmail.com</p>
+
+			<h2>Objetivo</h2>
+				<p>Maximizar meus conhecimentos desempenhando atividades desafiadoras, visando meu crescimento
+				profissional e o da empresa.</p>
+				
+				<div id="form" class="form">
+					<h3>Formação</h3>
+				</div>
+				
+			<h3>Experiência Profissional</h3>
+				<ul>
+					<li><strong>2019-2021 BS - Business Services</strong><br>
+					Cargo: Atendente de Telemarketing<br>
+					Principais atividades: Atendimento ativo e receptivo 
+					via Telefone ou chat; Envio de emails com resposta de dúvidas para clientes.</li><br>
+
+					<li><strong>2018-2019 MegaLan - Games e Personalizados</strong><br>
+					Cargo: Atendente/Design Gráfico<br>
+					Principais atividades: Atendimento ao Cliente; Venda De Acessórios de Informática; Serviços de LanHouse; Montagem, Manutenção e Configuração de computadores; 
+					Elaboração de artes graficas (Convites, Folders e Toppers de Bolo); Organização e Reposição de Vitrines 
+					e Freezers; Rotinas administrativas.</li>
+				</ul>
+				
+				<div id="qualif" class="qualif">
+					<h3>Qualificações e Atividades Complementares</h3>
+				</div>
+				
+				<div id="inf" class="inf">
+					<h3>Informações Adicionais</h3>
+				</div>
+		</div>
+		<script>
+			function complementos(){
+				let forma = ['Análise e Desenvolvimento de Sistemas. Universidade Estácio de Sá, previsão de conclusão em 2022;', 'Técnico em Telecomunicações. CEP-ETB - Escola Técnica de Brasília, conclusão em 2018.'];
+				let ulforma = document.createElement('ul');
+				document.getElementsByClassName('form')[0].appendChild(ulforma);
+				
+					for (var i = 0; i < forma.length; i++ ) {
+						let lilist = document.createElement('li');
+						lilist.innerHTML = `${forma[i]}`;
+						ulforma.appendChild(lilist);
+					}
+					
+				let quali = ['Análise de Dados em Python;', 'CorelDRAW e ADOBE Photoshop;', 'Pacote OFFICE;', 'Desenvolvimento WEB Front-end;','Oracle Application Express (APEX).']
+				let ulquali = document.createElement('ul');
+				document.getElementsByClassName('qualif')[0].appendChild(ulquali);
+				
+					for (var i = 0; i < quali.length; i++ ) {
+						let lilist = document.createElement('li');
+						lilist.innerHTML = `${quali[i]}`;
+						ulquali.appendChild(lilist);
+					}	
+					
+				let infor = ['Paciência;', 'Proatividade;', 'Detalhismo.']
+				let ulinfor	= document.createElement('ul');
+				document.getElementsByClassName('inf')[0].appendChild(ulinfor);
+				
+					for (var i = 0; i < infor.length; i++ ) {
+						let lilist = document.createElement('li');
+						lilist.innerHTML = `${infor[i]}`;
+						ulinfor.appendChild(lilist);
+					}
+			}
+		</script>
+	</body>
+</html>

@@ -5,99 +5,77 @@
 		<meta charset="utf-8">
 		<meta name="author" content="eBer_tlc">
 		<meta name="description" content="Curriculo de Eber Lucas Cerqueira Elias">
-		
-			<style>
-				body{
-					width: 90%;
-					margin: auto;              
-					font-family: Verdana, sans-serif;
-					color: black;
-                    			text-align: justify;
-				}
-				h1{
-					font-size: 14pt;
-				}
-				h2{
-                    			font-size: 11pt;
-				}
-				h3{
-					font-size: 10pt;
-				}
-                		h4{
-					font-size: 9pt;
-				}
-				p,li,ul{
-					font-size: 9pt;
-				}
-				.expelist{
-				}
-			</style>
+
+		<style>
+			body{
+				width: 90%;
+				margin: auto;              
+				font-family: trebuchet ms, sans-serif;
+				color: black;
+				text-align: justify;
+			}
+
+			h1{
+				font-size: 14pt;
+			}
+
+			h2{
+				font-size: 11pt;
+			}
+
+			span, strong, p, li, ul{
+				font-size: 9pt;
+			}
+			.sub{
+				font-size: 8.5pt;
+			}
+		</style>
 	</head>
 	<body>
-		<div>
+		<div id="all" class="all">
 			<h1>Eber Lucas Cerqueira Elias</h1>
-			<p>Brasileiro, Solteiro, 22 anos<br>
-			Brazlândia-DF<br>
-			Telefone: 061 99562-6861, 061 99657-0953<br>
-			E-mail: eberteclas@gmail.com<br>
-			Linkedin: /in/eber-tlc</p>
+			<div>
+				<p>Brasileiro, Solteiro, 22 anos<br>
+				Brazlândia-DF<br>
+				Telefone: 061 99562-6861, 061 99657-0953<br>
+				E-mail: eberteclas@gmail.com<br>
+				Linkedin: /in/eber-tlc</p>
+			</div>
+			<div>
+				<h2>Sobre Mim</h2>
+					<p>Apaixonado por dados e tecnologia, estou à procura de minha primeira experiência na área de análise de dados e BI.
+					Tenho o objetivo de poder interagir e me desenvolver nesse segmento, faço diversos cursos para aprimorar meu
+					conhecimento em SQL, Power BI e me especializando em Data Storytelling. Estudo Python a pouco mais de um ano, agora
+					aplicando a tecnologia para a análise de dados e Machine Learning.</p>
+			</div>
 
-			<h2>Objetivo</h2>
-			<p>Maximizar meus conhecimentos desempenhando atividades desafiadoras, visando meu crescimento
-			profissional e o da empresa.</p>
-				
 			<div id="form" class="form">
 				<h2>Formação</h2>
+					<p><strong>Análise e Desenvolvimento de Sistemas</strong><span> | 3º Periodo | Conlusão em 06/2023</span><br>
+					<span class="sub">Universidade Estácio de Sá</span></p>
+					<p><strong>Técnico em Telecomunicaçõess</strong><span> | Concluído em 2018</span><br>
+					<span class="sub">CEP-ETB - Escola Técnica de Brasília</span></p>
 			</div>
 
-			<div id="exp" class="exp">
-				<h2>Experiência Profissional</h2>
-			</div>
-
-			<div id="qualif" class="qualif">
-				<h2>Qualificações e Atividades Complementares</h2>
-			</div>
-
-			<div id="inf" class="inf">
-				<h2>Informações Adicionais</h2>
-			</div>
 		</div>
 		<script>
 			function complementos(){
-                
-				let forma = [];
-                    			var formaadd = forma.push('Análise e Desenvolvimento de Sistemas. Universidade Estácio de Sá, previsão de conclusão em 2022;', 'Técnico em Telecomunicações. CEP-ETB - Escola Técnica de Brasília.');
-                
-                		let quali = [];	
-					var qualiadd = quali.push('Análise de Dados em Python;', 'CoralDRAW e Pacote Adobe;', 'Pacote OFFICE;', 'Desenvolvimento WEB Front-end;','Microsoft Power BI;','Oracle Application Express (APEX).');
-                
-				let infor = [];
-                    			var inforadd = infor.push('Paciência;', 'Proatividade;', 'Detalhismo.');
-                
 				let expe1 = [];
 					var expe1add = expe1.push(
-						'<strong class="expelist">UCB - Universidade Católica de Brasília | 2021 - 2022</strong>',
-						'<span class="expelist">Auxiliar Administrativo / Tutoria EAD</span><br><br>',
 						'Acompanhar e motivar a performance e a frequência dos alunos no Ambiente Virtual de Aprendizagem;',
 						'Apoiar os discentes no acesso às suas atividades;',
 						'Realizar atendimento e esclarecimento de dúvidas técnicas via email, presencial ou por telefone;',
 						'Manter e alimentar as planilhas, relatórios, dashboards e outros documentos solicitados pela gestão.'
 					);
-                        
 				let expe2 = [];
 					var expe2add = expe2.push(
-						'<strong class="expelist">BS - Business Services | 2019 - 2021</strong>',
-						'<span class="expelist">Operador de Telemarketing</span><br><br>',
-						'<span></span>Atendimento ativo e receptivo via Telefone ou chat;',
+						'Atendimento ativo e receptivo via Telefone ou chat;',
 						'Atualização e cadastramento de clientes via preenchimento de dados;',
 						'Condução da solução de tratativas online, dirimindo dúvidas ou encaminhando para o superior;',
 						'Elaboração de relatórios de atendimento e/ou resolução das tratativas online.'
 					);
-
 				let expe3 = [];
 					var expe3add = expe3.push(
-						'<strong class="expelist">MegaLan - Games e Personalizados | 2018 - 2019</strong>',
-						'<span class="expelist">Atendente/Design Gráfico</span><br><br>',
 						'Atendimento ao Cliente;',
 						'Venda de produtos e acessórios de informática;',
 						'Montagem, manutenção e configuração de computadores;',
@@ -105,33 +83,57 @@
 						'Organização e reposição de produtos;',
 						'Elaboração de relatórios de vendas e estoque.'
 					);
-                
-				function list(array, name, clas){
-
+				let title = [];
+					var titleadd = title.push(
+						'UCB - Universidade Católica de Brasília | 2021 - 2022',
+						'Auxiliar Administrativo / Tutoria EAD',
+						'BS - Business Services | 2019 - 2021',
+						'Operador de Telemarketing',
+						'MegaLan - Games e Personalizados | 2018 - 2019',
+						'Atendente/Design Gráfico',
+					);
+				
+				function list (name, array, clas, title, subtitle){
 					let div = document.createElement('div');
 					div.setAttribute('class', clas);
-					name[0].append(div);
-
+					let strong = document.createElement('strong');
+					let span = document.createElement('span');
 					let line = document.createElement('ul');
+					let br = document.createElement('br');
+					strong.innerHTML = title;
+					span.innerHTML = subtitle;
+					name[0].appendChild(div);
+					div.appendChild(strong);
+					div.appendChild(br)
+					div.appendChild(span);
 					div.appendChild(line);
-					
+
 					for (var i = 0; i < array.length; i++ ){
 						let lilist = document.createElement('li');
 						lilist.innerHTML = array[i]
 						line.appendChild(lilist);
 					}
 				}
+				
+				function div(name, clas, title){
+					let div = document.createElement('div');
+					div.setAttribute('class', clas);
+					let h2 = document.createElement('h2');
+					h2.innerHTML = title;
+					name[0].appendChild(div);
+					div.appendChild(h2);
 
-				list(forma, document.getElementsByClassName('form'), document.getElementsByName('newdiv'));
-				list(quali, document.getElementsByClassName('qualif'), document.getElementsByName('newdiv'), );
-				list(infor, document.getElementsByClassName('inf'), document.getElementsByName('newdiv'));
-				list(expe1, document.getElementsByClassName('exp'), document.getElementsByName('exleriencia1'));
-				list(expe2, document.getElementsByClassName('exp'), document.getElementsByName('exleriencia2'));
-				list(expe3, document.getElementsByClassName('exp'), document.getElementsByName('exleriencia3'));
-            }
-            
-            complementos();
-            
+					return(clas);
+				}
+
+				let newdiv = div(document.getElementsByClassName('all'), 'exp', 'Experiencias');
+
+				list(document.getElementsByClassName(newdiv),  expe1, 'experiencia1', title[0], title[1]);
+				list(document.getElementsByClassName(newdiv),  expe2, 'experiencia2', title[2], title[3]);
+				list(document.getElementsByClassName(newdiv),  expe3, 'experiencia3', title[4], title[5]);
+			}
+			
+			complementos();
 		</script>
 	</body>
 </html>

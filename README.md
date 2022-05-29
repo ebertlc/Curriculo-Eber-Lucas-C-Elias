@@ -1,4 +1,3 @@
 ### Olá Pessoas 👋
 
-
-**ebertlc/ebertlc** Esse é o meu curricuclo
+Esse é o meu curricuclo

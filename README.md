@@ -1,8 +1,3 @@
-### Olá Pessoas 👋
-
-Esse é o meu curricuclo
-
-
 # Meu Currículo
 
 Este é o meu currículo em formato HTML, onde compartilho minhas informações profissionais e experiências.

@@ -18,6 +18,7 @@ Para visualizar o currículo, siga as etapas abaixo:
 
 Ou [Clicando Aqui](https://ebertlc.github.io/Curriculo-Eber-Lucas-C-Elias/){:target="_blank"}
 <a href="https://ebertlc.github.io/Curriculo-Eber-Lucas-C-Elias/" target="_blank">Clicando Aqui</a>
+Este projeto está licenciado sob a [Licença MIT](https://opensource.org/licenses/MIT){:target="_blank" rel="noopener"}
 
 ## Personalização
 

@@ -17,6 +17,7 @@ Para visualizar o currículo, siga as etapas abaixo:
 3. O currículo será exibido com todas as informações formatadas corretamente.
 
 Ou [Clicando Aqui](https://ebertlc.github.io/Curriculo-Eber-Lucas-C-Elias/){:target="_blank"}
+<a href="https://ebertlc.github.io/Curriculo-Eber-Lucas-C-Elias/" target="_blank">Clicando Aqui</a>
 
 ## Personalização
 

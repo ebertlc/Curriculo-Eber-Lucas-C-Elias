@@ -16,7 +16,7 @@ Para visualizar o currículo, siga as etapas abaixo:
 2. Abra o arquivo `index.html` em um navegador web.
 3. O currículo será exibido com todas as informações formatadas corretamente.
 
-Ou [Clicando Aqui](https://ebertlc.github.io/Curriculo-Eber-Lucas-C-Elias/)
+Ou [Clicando Aqui](https://ebertlc.github.io/Curriculo-Eber-Lucas-C-Elias/){:target="_blank"}
 
 ## Personalização
 

@@ -8,21 +8,29 @@
 
 		<style>
 			body{
-				width: 90%;
 				margin: auto;              
 				font-family: trebuchet ms, sans-serif;
 				color: black;
-				text-align: justify;
 			}
-
-			h1{
-				font-size: 14pt;
+			#cabecalho{
+				display: flex;
+				border: 1px solid #000;
+				background: rgba(217, 217, 217, 0.00);
 			}
-
-			h2{
-				font-size: 11pt;
+			#nome{
+				width: 344px;
+				height: 125px;
+				flex-shrink: 0;
+				border: 1px solid #000;
+				background: rgba(217, 217, 217, 0.00);
 			}
-
+			#info{
+				width: 252px;
+				height: 125px;
+				flex-shrink: 0;
+				border: 1px solid #000;
+				background: rgba(217, 217, 217, 0.00);
+			}
 			span, strong, p, li, ul{
 				font-size: 9pt;
 			}
@@ -30,17 +38,22 @@
 				font-size: 8.5pt;
 			}
 		</style>
-		<script defer src="https://pyscript.net/alpha/pyscript.js"></script>
 	</head>
 	<body>
 		<div id="all" class="all">
-			<h1>Eber Lucas Cerqueira Elias</h1>
-			<div>
-				<p>Brasileiro, Solteiro, 22 anos<br>
-				Brazlândia-DF<br>
-				Telefone: 061 99562-6861, 061 99657-0953<br>
-				E-mail: eberteclas@gmail.com<br>
-				Linkedin: /in/eber-tlc</p>
+			<div id="cabecalho">
+				<div id="nome">
+					<h1>Eber Lucas C Elias</h1>
+					<h4>Lorem ipsum | Lorem ipsum</h4>
+				</div>
+				<div id="info">
+					<p>Brasileiro, Solteiro, 22 anos<br>
+					Brazlândia-DF<br>
+					Telefone: 061 99562-6861, 061 99657-0953<br>
+					E-mail: eberteclas@gmail.com<br>
+					Linkedin: /in/eber-tlc<br>
+					GitHub: /in/eber-tlc</p>
+				</div>
 			</div>
 			<div>
 				<h2>Sobre Mim</h2>
@@ -59,9 +72,6 @@
 			</div>
 
 		</div>
-		<py-script>
-			#em breve
-		</py-script>
 		<script>
 			function complementos(){
 				let expe1 = [];

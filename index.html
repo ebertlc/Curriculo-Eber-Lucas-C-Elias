@@ -23,6 +23,7 @@
 				flex-shrink: 0;
 				border: 1px solid #000;
 				background: rgba(217, 217, 217, 0.00);
+				text-align: center;
 			}
 			#info{
 				width: 252px;
@@ -40,114 +41,145 @@
 		</style>
 	</head>
 	<body>
-		<div id="all" class="all">
 			<div id="cabecalho">
 				<div id="nome">
 					<h1>Eber Lucas C Elias</h1>
 					<h4>Lorem ipsum | Lorem ipsum</h4>
 				</div>
 				<div id="info">
-					<p>Brasileiro, Solteiro, 22 anos<br>
-					Brazlândia-DF<br>
-					Telefone: 061 99562-6861, 061 99657-0953<br>
-					E-mail: eberteclas@gmail.com<br>
-					Linkedin: /in/eber-tlc<br>
-					GitHub: /in/eber-tlc</p>
+					<p>
+						Brasileiro, Solteiro, 22 anos<br>
+						Brazlândia-DF<br>
+						Telefone: 061 99562-6861, 061 99657-0953<br>
+						E-mail: eberteclas@gmail.com<br>
+						Linkedin: /in/eber-tlc<br>
+						GitHub: /in/eber-tlc
+					</p>
 				</div>
 			</div>
-			<div>
+			<div id="sobre">
 				<h2>Sobre Mim</h2>
-					<p>Apaixonado por dados e tecnologia, estou à procura de minha primeira experiência na área de análise de dados e BI.
-					Tenho o objetivo de poder interagir e me desenvolver nesse segmento, faço diversos cursos para aprimorar meu
-					conhecimento em SQL, Power BI e me especializando em Data Storytelling. Estudo Python a pouco mais de um ano, agora
-					aplicando a tecnologia para a análise de dados e Machine Learning.</p>
+					<p>
+						Apaixonado por dados e tecnologia, estou à procura de minha primeira experiência na área de análise de dados e BI.
+						Tenho o objetivo de poder interagir e me desenvolver nesse segmento, faço diversos cursos para aprimorar meu
+						conhecimento em SQL, Power BI e me especializando em Data Storytelling. Estudo Python a pouco mais de um ano, agora
+						aplicando a tecnologia para a análise de dados e Machine Learning.
+					</p>
 			</div>
 
 			<div id="form" class="form">
 				<h2>Formação</h2>
-					<p><strong>Análise e Desenvolvimento de Sistemas</strong><span> | 3º Periodo | Conlusão em 06/2023</span><br>
-					<span class="sub">Universidade Estácio de Sá</span></p>
-					<p><strong>Técnico em Telecomunicaçõess</strong><span> | Concluído em 2018</span><br>
-					<span class="sub">CEP-ETB - Escola Técnica de Brasília</span></p>
+					<p>
+						<span><strong>Análise e Desenvolvimento de Sistemas</strong> | 3º Periodo | Conlusão em 06/2023</span><br>
+						<span class="sub">Universidade Estácio de Sá</span>
+					</p>
+					<p>
+						<span><strong>Técnico em Telecomunicaçõess</strong> | Concluído em 2018</span><br>
+						<span class="sub">CEP-ETB - Escola Técnica de Brasília</span>
+					</p>
 			</div>
-
-		</div>
+			<div id="experiencias_qualificacoes"></div>
 		<script>
-			function complementos(){
-				let expe1 = [];
-					var expe1add = expe1.push(
-						'Acompanhar e motivar a performance e a frequência dos alunos no Ambiente Virtual de Aprendizagem;',
-						'Apoiar os discentes no acesso às suas atividades;',
-						'Realizar atendimento e esclarecimento de dúvidas técnicas via email, presencial ou por telefone;',
-						'Manter e alimentar as planilhas, relatórios, dashboards e outros documentos solicitados pela gestão.'
-					);
-				let expe2 = [];
-					var expe2add = expe2.push(
-						'Atendimento ativo e receptivo via Telefone ou chat;',
-						'Atualização e cadastramento de clientes via preenchimento de dados;',
-						'Condução da solução de tratativas online, dirimindo dúvidas ou encaminhando para o superior;',
-						'Elaboração de relatórios de atendimento e/ou resolução das tratativas online.'
-					);
-				let expe3 = [];
-					var expe3add = expe3.push(
-						'Atendimento ao Cliente;',
-						'Venda de produtos e acessórios de informática;',
-						'Montagem, manutenção e configuração de computadores;',
-						'Elaboração de peças gráficas em geral;',
-						'Organização e reposição de produtos;',
-						'Elaboração de relatórios de vendas e estoque.'
-					);
-				let title = [];
-					var titleadd = title.push(
-						'UCB - Universidade Católica de Brasília | 2021 - 2022',
-						'Auxiliar Administrativo / Tutoria EAD',
-						'BS - Business Services | 2019 - 2021',
-						'Operador de Telemarketing',
-						'MegaLan - Games e Personalizados | 2018 - 2019',
-						'Atendente/Design Gráfico',
-					);
-				
-				function list (name, array, clas, title, subtitle){
-					let div = document.createElement('div');
-					div.setAttribute('class', clas);
-					let strong = document.createElement('strong');
-					let span = document.createElement('span');
-					let line = document.createElement('ul');
-					let br = document.createElement('br');
-					strong.innerHTML = title;
-					span.innerHTML = subtitle;
-					name[0].appendChild(div);
-					div.appendChild(strong);
-					div.appendChild(br)
-					div.appendChild(span);
-					div.appendChild(line);
+			let empresa = []
+			let cargo = []
 
-					for (var i = 0; i < array.length; i++ ){
-						let lilist = document.createElement('li');
-						lilist.innerHTML = array[i]
-						line.appendChild(lilist);
-					}
-				}
-				
-				function div(name, clas, title){
-					let div = document.createElement('div');
-					div.setAttribute('class', clas);
-					let h2 = document.createElement('h2');
-					h2.innerHTML = title;
-					name[0].appendChild(div);
-					div.appendChild(h2);
-
-					return(clas);
-				}
-
-				let newdiv = div(document.getElementsByClassName('all'), 'exp', 'Experiencias');
-
-				list(document.getElementsByClassName(newdiv),  expe1, 'experiencia1', title[0], title[1]);
-				list(document.getElementsByClassName(newdiv),  expe2, 'experiencia2', title[2], title[3]);
-				list(document.getElementsByClassName(newdiv),  expe3, 'experiencia3', title[4], title[5]);
-			}
+			let funcoes_cargo_0 = []
+			let funcoes_cargo_1 = []
+			let funcoes_cargo_2 = []
 			
-			complementos();
+			function list (nome_id_div_pai, empresa, cargo, funcoes_cargo, nome_classe,){
+
+				let div = document.createElement('div')
+				let strong = document.createElement('strong')
+				let span = document.createElement('span')
+				let line = document.createElement('ul')
+				let br = document.createElement('br')
+
+				strong.innerHTML = empresa
+				span.innerHTML = cargo
+
+				nome_id_div_pai.appendChild(div)
+
+				div.appendChild(strong)
+				div.appendChild(br)
+				div.appendChild(span)
+				div.appendChild(line)
+
+				div.setAttribute('class', nome_classe)
+
+				for (var i = 0; i < funcoes_cargo.length; i++ ){
+					let lilist = document.createElement('li')
+					lilist.innerHTML = funcoes_cargo[i]
+					line.appendChild(lilist)
+				}
+			}
+			function div_pai(nome_id_div_pai, id){
+
+				let div = document.createElement('div')
+				nome_id_div_pai.appendChild(div)
+				div.setAttribute('id', id)
+
+				return(id)
+				}
+			
+			function div(nome_id_div_pai, titulo_secao, id){
+
+				let div = document.createElement('div')
+				let h2 = document.createElement('h2')
+
+				h2.innerHTML = titulo_secao
+
+				nome_id_div_pai.appendChild(div)
+				div.appendChild(h2)
+
+				div.setAttribute('id', id)
+
+				return(id)
+			}
+
+			empresa.push(
+				'UCB - Universidade Católica de Brasília | 2021 - 2022',
+				'BS - Business Services | 2019 - 2021',
+				'MegaLan - Games e Personalizados | 2018 - 2019'
+			)
+			cargo.push(
+				'Auxiliar Administrativo / Tutoria EAD',
+				'Operador de Telemarketing',
+				'Atendente/Design Gráfico'
+			)
+
+			funcoes_cargo_0.push(
+				'Acompanhar e motivar a performance e a frequência dos alunos no Ambiente Virtual de Aprendizagem;',
+				'Apoiar os discentes no acesso às suas atividades;',
+				'Realizar atendimento e esclarecimento de dúvidas técnicas via email, presencial ou por telefone;',
+				'Manter e alimentar as planilhas, relatórios, dashboards e outros documentos solicitados pela gestão.'
+			)
+			funcoes_cargo_1.push(
+				'Atendimento ativo e receptivo via Telefone ou chat;',
+				'Atualização e cadastramento de clientes via preenchimento de dados;',
+				'Condução da solução de tratativas online, dirimindo dúvidas ou encaminhando para o superior;',
+				'Elaboração de relatórios de atendimento e/ou resolução das tratativas online.'
+			)
+			funcoes_cargo_2.push(
+				'Atendimento ao Cliente;',
+				'Venda de produtos e acessórios de informática;',
+				'Montagem, manutenção e configuração de computadores;',
+				'Elaboração de peças gráficas em geral;',
+				'Organização e reposição de produtos;',
+				'Elaboração de relatórios de vendas e estoque.'
+			)
+
+			let div_experiecias = div(document.getElementById('experiencias_qualificacoes'), 'Experiencias', 'experiencias')
+
+			list(document.getElementById(div_experiecias), empresa[0], cargo[0], funcoes_cargo_0, 'experiencias_lista')
+			list(document.getElementById(div_experiecias), empresa[1], cargo[1], funcoes_cargo_1, 'experiencias_lista')
+			list(document.getElementById(div_experiecias), empresa[2], cargo[2], funcoes_cargo_2, 'experiencias_lista')
+
+			div_pai(document.getElementById('experiencias_qualificacoes'), 'graficos')
+
+			div(document.getElementById('graficos'), 'Qualificações', 'qualificacoes')
+			div(document.getElementById('graficos'), 'Idiomas', 'idiomas')
+			div(document.getElementById('graficos'), 'Outras Qualificações', 'outras_qualificacoes')
 		</script>
 	</body>
 </html>

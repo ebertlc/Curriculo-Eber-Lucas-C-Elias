@@ -197,11 +197,11 @@
 			list(document.getElementById(div_experiecias), empresa[1], cargo[1], funcoes_cargo_1, 'experiencias_lista')
 			list(document.getElementById(div_experiecias), empresa[2], cargo[2], funcoes_cargo_2, 'experiencias_lista')
 
-			div_pai(document.getElementById('experiencias_qualificacoes'), 'graficos')
+			let div_graficos = div_pai(document.getElementById('experiencias_qualificacoes'), 'graficos')
 
-			div(document.getElementById('graficos'), 'Qualificações', 'qualificacoes')
-			div(document.getElementById('graficos'), 'Idiomas', 'idiomas')
-			div(document.getElementById('graficos'), 'Outras Qualificações', 'outras_qualificacoes')
+			div(document.getElementById(div_graficos), 'Qualificações', 'qualificacoes')
+			div(document.getElementById(div_graficos), 'Idiomas', 'idiomas')
+			div(document.getElementById(div_graficos), 'Outras Qualificações', 'outras_qualificacoes')
 		</script>
 	</body>
 </html>

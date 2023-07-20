@@ -12,63 +12,96 @@
 				font-family: trebuchet ms, sans-serif;
 				color: black;
 			}
-			#cabecalho, #experiencias_qualificacoes{
-				display: flex;
-			}
-			#nome{
-				width: 405.5px;
-				height: 124px;
-				flex-shrink: 0; 
-			}
-			#info{
-				width: 294.5px;
-				height: 124px; 
-				flex-shrink: 0;
-			}
-			#sobre{
-				width: 703px;
-				height: 134px;
-				flex-shrink: 0;
-				text-align: justify;
-			}
-			#form{
-				width: 703px;
-				height: 144px;
-				flex-shrink: 0;
-			}
-			#experiencias{
-				width: 405.5px;
-				height: 539px;
-				flex-shrink: 0;
-			}
-			#qualificacoes{
-				width: 294.5px;
-				height: 189px;
-				flex-shrink: 0;
-			}
-			#idiomas{
-				width: 294.5px;
-				height: 135px;
-				flex-shrink: 0;
-			}
-			#outras_qualificacoes{
-				width: 294.5px;
-				height: 215px;
-				flex-shrink: 0;
-			}
 			span, strong, p, li, ul{
 				font-size: 9pt;
 			}
 			.sub{
 				font-size: 8.5pt;
 			}
+			h1, h2, h4{
+				margin: 0;
+				padding: 0;
+				border: 0;
+			}
+			#cabecalho, #experiencias_graficos{
+				display: flex;
+				background-color: blueviolet;
+			}
+			#cabecalho{
+				height: 124px;
+			}
+			#nome{
+				display: flex;
+				width: 405.5px;
+				height: auto;
+				flex-shrink: 0;
+				background-color: rgb(161, 231, 192);
+			}
+			#nome_content{
+				text-align: center;
+				margin: 0;
+				padding: 0;
+				border: 0;
+			}
+			#info{
+				width: 294.5px;
+				height: auto; 
+				flex-shrink: 0;
+				background-color: rgb(143, 182, 240);
+			}
+			#sobre{
+				width: 703px;
+				height: auto;
+				flex-shrink: 0;
+				background-color: rgb(238, 200, 118);
+			}
+			#sobre_content{
+				text-align: justify;
+				width: 683px;
+			}
+			#form{
+				width: 703px;
+				height: auto;
+				flex-shrink: 0;
+				background-color: rgb(233, 148, 148);
+			}
+			#experiencias_graficos, #graficos{
+				height: 539px;
+			}
+			#experiencias{
+				width: 405.5px;
+				height: auto;
+				flex-shrink: 0;
+				background-color: rgb(151, 203, 216);
+			}
+			#qualificacoes{
+				width: 294.5px;
+				height:400px;
+				flex-shrink: 0;
+				width:600px; 
+				background-color: rgb(151, 203, 216);
+			}
+			#idiomas{
+				width: 294.5px;
+				height: auto;
+				flex-shrink: 0;
+				background-color: rgb(151, 203, 216);
+			}
+			#outras_qualificacoes{
+				width: 294.5px;
+				height: auto;
+				flex-shrink: 0;
+				background-color: rgb(151, 203, 216);
+			}
 		</style>
 	</head>
 	<body>
 			<div id="cabecalho">
 				<div id="nome">
-					<h1>Eber Lucas C Elias</h1>
-					<h4>Lorem ipsum | Lorem ipsum</h4>
+					<div id="nome_content">
+						<h1>Eber Lucas C Elias</h1>
+						<h4>Lorem ipsum | Lorem ipsum</h4>
+					</div>
 				</div>
 				<div id="info">
 					<p>
@@ -83,14 +116,16 @@
 			</div>
 			<div id="sobre">
 				<h2>Sobre Mim</h2>
-					<p>
-						Entusiasta de dados e tecnologia, estou à procura de minha primeira experiência na área de análise de dados e BI. Tenho
-						o objetivo de poder interagir e me desenvolver nesse segmento, faço diversos cursos para aprimorar meu conhecimento
-						em SQL, Power BI e me especializando em Data Storytelling.
-					</p>
+					<div id="sobre_content">
+						<p>
+							Entusiasta de dados e tecnologia, estou à procura de minha primeira experiência na área de análise de dados e BI. Tenho
+							o objetivo de poder interagir e me desenvolver nesse segmento, faço diversos cursos para aprimorar meu conhecimento
+							em SQL, Power BI e me especializando em Data Storytelling.
+						</p>
+					</div>
 			</div>
 
-			<div id="form" class="form">
+			<div id="form">
 				<h2>Formação</h2>
 					<p>
 						<span><strong>Análise e Desenvolvimento de Sistemas</strong> | 3º Periodo | Conlusão em 06/2023</span><br>
@@ -101,7 +136,7 @@
 						<span class="sub">CEP-ETB - Escola Técnica de Brasília</span>
 					</p>
 			</div>
-			<div id="experiencias_qualificacoes"></div>
+			<div id="experiencias_graficos"></div>
 		<script>
 			let empresa = []
 			let cargo = []
@@ -188,17 +223,40 @@
 				'Elaboração de relatórios de atendimento e/ou resolução das tratativas online.'
 			)
 
-			let div_experiecias = div(document.getElementById('experiencias_qualificacoes'), 'Experiencias', 'experiencias')
+			let div_experiecias = div(document.getElementById('experiencias_graficos'), 'Experiencias', 'experiencias')
 
 			list(document.getElementById(div_experiecias), empresa[0], cargo[0], funcoes_cargo_0, 'experiencias_lista')
 			list(document.getElementById(div_experiecias), empresa[1], cargo[1], funcoes_cargo_1, 'experiencias_lista')
 			list(document.getElementById(div_experiecias), empresa[2], cargo[2], funcoes_cargo_2, 'experiencias_lista')
 
-			let div_graficos = div_pai(document.getElementById('experiencias_qualificacoes'), 'graficos')
+			let div_graficos = div_pai(document.getElementById('experiencias_graficos'), 'graficos')
 
 			div(document.getElementById(div_graficos), 'Qualificações', 'qualificacoes')
 			div(document.getElementById(div_graficos), 'Idiomas', 'idiomas')
 			div(document.getElementById(div_graficos), 'Outras Qualificações', 'outras_qualificacoes')
 		</script>
+  <script src="https://www.koolchart.com/demo/LicenseKey/KoolChartLicense.js"></script>
+  <script src="https://www.koolchart.com/demo/KoolChart/JS/KoolChart.js"></script>
+  <link rel="stylesheet" href="https://www.koolchart.com/demo/KoolChart/Assets/Css/KoolChart.css"/>
+  <script type="text/javascript">
+
+		var chartVars = "KoolOnLoadCallFunction=chartReadyHandler";
+
+		KoolChart.create("chart1", "qualificacoes", chartVars, "30%", "30%");
+
+		function chartReadyHandler(id) {
+		document.getElementById(id).setLayout(layoutStr);
+		document.getElementById(id).setData(chartData);
+		}
+
+		var layoutStr =
+		'<KoolChart>'
+			+'<Gauge innerRatio="0.5" nameField="name" valueField="value" backgroundColors="[#f0f0f0]" foregroundColors="[#5587a2,#20cbc2,#f6a54c]" minimum="0" maximum="100" startAngle="-90" minimumAngle="0" maximumAngle="180"  >'
+			+'</Gauge>'
+		+'</KoolChart>';
+
+		var chartData = [{"name" : "Batata", "value" : 80},];
+ 
+  </script>
 	</body>
 </html>

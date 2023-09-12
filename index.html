@@ -75,11 +75,30 @@
 				background-color: rgb(151, 203, 216);
 			}
 			#qualificacoes{
-				width: 294.5px;
-				height:400px;
-				flex-shrink: 0;
-				width:600px; 
 				background-color: rgb(151, 203, 216);
+			}
+			#qualificacoestitle{
+				width: auto;
+				height: 1px;
+			}
+			#graficos_qualificacoes{
+				width: 294.5px;
+				height: auto;
+				display: flex;
+				flex-shrink: 0;
+    			justify-content: space-between;
+				flex-wrap: wrap;
+			}
+			.chart-container {
+				width: 130px;
+				height: 130px;
+				margin: none; /* Espaço entre os gráficos */
+        	}
+			#SQL, #Python, #Power_bi, #Excel{
+				width: 130px;
+       			height: 130px;
+				display: flex;
+				flex-shrink: 0;
 			}
 			#idiomas{
 				width: 294.5px;
@@ -231,32 +250,76 @@
 
 			let div_graficos = div_pai(document.getElementById('experiencias_graficos'), 'graficos')
 
-			div(document.getElementById(div_graficos), 'Qualificações', 'qualificacoes')
+			let div_qualificacoes = div_pai(document.getElementById(div_graficos), 'qualificacoes')
+
+			div(document.getElementById(div_qualificacoes), 'Qualificações', 'qualificacoestitle')
+
+			let div_graficos_qualificacoes = div_pai(document.getElementById(div_qualificacoes), 'graficos_qualificacoes')
+			div(document.getElementById(div_graficos_qualificacoes), 'SQL', 'SQL')
+			div(document.getElementById(div_graficos_qualificacoes), 'Python', 'Python')
+			div(document.getElementById(div_graficos_qualificacoes), 'Power BI', 'Power_bi')
+			div(document.getElementById(div_graficos_qualificacoes), 'Excel', 'Excel')
+
+
 			div(document.getElementById(div_graficos), 'Idiomas', 'idiomas')
 			div(document.getElementById(div_graficos), 'Outras Qualificações', 'outras_qualificacoes')
 		</script>
-  <script src="https://www.koolchart.com/demo/LicenseKey/KoolChartLicense.js"></script>
-  <script src="https://www.koolchart.com/demo/KoolChart/JS/KoolChart.js"></script>
-  <link rel="stylesheet" href="https://www.koolchart.com/demo/KoolChart/Assets/Css/KoolChart.css"/>
-  <script type="text/javascript">
-
-		var chartVars = "KoolOnLoadCallFunction=chartReadyHandler";
-
-		KoolChart.create("chart1", "qualificacoes", chartVars, "30%", "30%");
-
-		function chartReadyHandler(id) {
-		document.getElementById(id).setLayout(layoutStr);
-		document.getElementById(id).setData(chartData);
-		}
-
-		var layoutStr =
-		'<KoolChart>'
-			+'<Gauge innerRatio="0.5" nameField="name" valueField="value" backgroundColors="[#f0f0f0]" foregroundColors="[#5587a2,#20cbc2,#f6a54c]" minimum="0" maximum="100" startAngle="-90" minimumAngle="0" maximumAngle="180"  >'
-			+'</Gauge>'
-		+'</KoolChart>';
-
-		var chartData = [{"name" : "Batata", "value" : 80},];
- 
-  </script>
+		<!-- instaciar a biblioteca highcharts para criar um grafico Semi circle donut-->
+		<script src="https://code.highcharts.com/highcharts.js"></script>
+		<script src="https://code.highcharts.com/modules/exporting.js"></script>
+		<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+		<script>
+			function createChart(chartId, titleText, data) {
+				Highcharts.chart(chartId, {
+					chart: { type: 'pie', width: 130, height: 170, backgroundColor: null },
+					title: {
+						text: titleText,
+						align: 'center',
+						verticalAlign: 'bottom',
+						y: -60,
+						style: { fontSize: '14px', backgroundColor: null }
+					},
+					tooltip: { pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>' },
+					accessibility: { point: { valueSuffix: '%' } },
+					plotOptions: {
+						pie: {
+							dataLabels: { enabled: true, distance: -50, style: { fontWeight: 'bold', color: 'white' } },
+							startAngle: -90,
+							endAngle: 90,
+							center: ['50%', '75%'],
+							size: '150%'
+						}
+					},
+					exporting: { enabled: false },
+					series: [{
+						type: 'pie',
+						name: titleText,
+						innerSize: '70%',
+						data: data
+					}],
+					credits: { enabled: false }
+				});
+			}
+		
+			createChart('SQL', 'SQL', [
+				['', 90.0],
+				{ name: 'Void', y: 10.0, dataLabels: { enabled: false } }
+			]);
+		
+			createChart('Python', 'Python', [
+				['', 75.0],
+				{ name: 'Void', y: 35.0, dataLabels: { enabled: false } }
+			]);
+		
+			createChart('Power_bi', 'Power BI', [
+				['', 80.0],
+				{ name: 'Void', y: 20.0, dataLabels: { enabled: false } }
+			]);
+		
+			createChart('Excel', 'Excel', [
+				['', 50.0],
+				{ name: 'Void', y: 50.0, dataLabels: { enabled: false } }
+			]);
+		</script>
 	</body>
 </html>

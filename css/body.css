@@ -1,0 +1,16 @@
+body{
+    margin: auto;              
+    font-family: trebuchet ms, sans-serif;
+    color: black;
+}
+span, strong, p, li, ul{
+    font-size: 9pt;
+}
+.sub{
+    font-size: 8.5pt;
+}
+h1, h2, h4{
+    margin: 0;
+    padding: 0;
+    border: 0;
+}

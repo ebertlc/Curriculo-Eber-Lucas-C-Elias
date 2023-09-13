@@ -1,0 +1,42 @@
+#cabecalho{
+    display: flex;
+    background-color: blueviolet;
+}
+#cabecalho{
+    height: 124px;
+}
+#nome{
+    display: flex;
+    width: 405.5px;
+    height: auto;
+    flex-shrink: 0;
+    background-color: rgb(161, 231, 192);
+}
+#nome_content{
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+#info{
+    width: 294.5px;
+    height: auto; 
+    flex-shrink: 0;
+    background-color: rgb(143, 182, 240);
+}
+#sobre{
+    width: 703px;
+    height: auto;
+    flex-shrink: 0;
+    background-color: rgb(238, 200, 118);
+}
+#sobre_content{
+    text-align: justify;
+    width: 683px;
+}
+#form{
+    width: 703px;
+    height: auto;
+    flex-shrink: 0;
+    background-color: rgb(233, 148, 148);
+}

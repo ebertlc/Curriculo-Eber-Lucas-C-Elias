@@ -1,0 +1,51 @@
+#experiencias_graficos{
+    display: flex;
+    background-color: blueviolet;
+}
+#experiencias_graficos, #graficos{
+    height: 539px;
+}
+#experiencias{
+    width: 405.5px;
+    height: auto;
+    flex-shrink: 0;
+    background-color: rgb(151, 203, 216);
+}
+#qualificacoes{
+    background-color: rgb(151, 203, 216);
+}
+#qualificacoestitle{
+    width: auto;
+    height: 1px;
+}
+#graficos_qualificacoes{
+    width: 294.5px;
+    height: auto;
+    display: flex;
+    flex-shrink: 0;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.chart-container {
+    width: 130px;
+    height: 130px;
+    margin: none; /* Espaço entre os gráficos */
+}
+#SQL, #Python, #Power_bi, #Excel{
+    width: 130px;
+       height: 130px;
+    display: flex;
+    flex-shrink: 0;
+}
+#idiomas{
+    width: 294.5px;
+    height: auto;
+    flex-shrink: 0;
+    background-color: rgb(151, 203, 216);
+}
+#outras_qualificacoes{
+    width: 294.5px;
+    height: auto;
+    flex-shrink: 0;
+    background-color: rgb(151, 203, 216);
+}

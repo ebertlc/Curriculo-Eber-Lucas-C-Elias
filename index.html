@@ -5,114 +5,13 @@
 		<meta charset="utf-8">
 		<meta name="author" content="eBer_tlc">
 		<meta name="description" content="Curriculo de Eber Lucas Cerqueira Elias">
-
-		<style>
-			body{
-				margin: auto;              
-				font-family: trebuchet ms, sans-serif;
-				color: black;
-			}
-			span, strong, p, li, ul{
-				font-size: 9pt;
-			}
-			.sub{
-				font-size: 8.5pt;
-			}
-			h1, h2, h4{
-				margin: 0;
-				padding: 0;
-				border: 0;
-			}
-			#cabecalho, #experiencias_graficos{
-				display: flex;
-				background-color: blueviolet;
-			}
-			#cabecalho{
-				height: 124px;
-			}
-			#nome{
-				display: flex;
-				width: 405.5px;
-				height: auto;
-				flex-shrink: 0;
-				background-color: rgb(161, 231, 192);
-			}
-			#nome_content{
-				text-align: center;
-				margin: 0;
-				padding: 0;
-				border: 0;
-			}
-			#info{
-				width: 294.5px;
-				height: auto; 
-				flex-shrink: 0;
-				background-color: rgb(143, 182, 240);
-			}
-			#sobre{
-				width: 703px;
-				height: auto;
-				flex-shrink: 0;
-				background-color: rgb(238, 200, 118);
-			}
-			#sobre_content{
-				text-align: justify;
-				width: 683px;
-			}
-			#form{
-				width: 703px;
-				height: auto;
-				flex-shrink: 0;
-				background-color: rgb(233, 148, 148);
-			}
-			#experiencias_graficos, #graficos{
-				height: 539px;
-			}
-			#experiencias{
-				width: 405.5px;
-				height: auto;
-				flex-shrink: 0;
-				background-color: rgb(151, 203, 216);
-			}
-			#qualificacoes{
-				background-color: rgb(151, 203, 216);
-			}
-			#qualificacoestitle{
-				width: auto;
-				height: 1px;
-			}
-			#graficos_qualificacoes{
-				width: 294.5px;
-				height: auto;
-				display: flex;
-				flex-shrink: 0;
-    			justify-content: space-between;
-				flex-wrap: wrap;
-			}
-			.chart-container {
-				width: 130px;
-				height: 130px;
-				margin: none; /* Espaço entre os gráficos */
-        	}
-			#SQL, #Python, #Power_bi, #Excel{
-				width: 130px;
-       			height: 130px;
-				display: flex;
-				flex-shrink: 0;
-			}
-			#idiomas{
-				width: 294.5px;
-				height: auto;
-				flex-shrink: 0;
-				background-color: rgb(151, 203, 216);
-			}
-			#outras_qualificacoes{
-				width: 294.5px;
-				height: auto;
-				flex-shrink: 0;
-				background-color: rgb(151, 203, 216);
-			}
-		</style>
+		<link rel="stylesheet" href="css/body.css">
+		<link rel="stylesheet" href="css/title.css">
+		<link rel="stylesheet" href="css/divs_js.css">
+		<script src="js/divs/divs.js"></script>
+		<script src="js/divs/listas.js"></script>
+		<script src="js/graficos/qualificacoes/grafico.js"></script>
+		<script src="js/graficos/qualificacoes/grafico_qualificacoes.js"></script>
 	</head>
 	<body>
 			<div id="cabecalho">
@@ -305,17 +204,14 @@
 				['', 90.0],
 				{ name: 'Void', y: 10.0, dataLabels: { enabled: false } }
 			]);
-		
 			createChart('Python', 'Python', [
 				['', 75.0],
 				{ name: 'Void', y: 35.0, dataLabels: { enabled: false } }
 			]);
-		
 			createChart('Power_bi', 'Power BI', [
 				['', 80.0],
 				{ name: 'Void', y: 20.0, dataLabels: { enabled: false } }
 			]);
-		
 			createChart('Excel', 'Excel', [
 				['', 50.0],
 				{ name: 'Void', y: 50.0, dataLabels: { enabled: false } }

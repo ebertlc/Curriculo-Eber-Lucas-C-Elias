@@ -10,8 +10,12 @@
 		<link rel="stylesheet" href="css/divs_js.css">
 		<script src="js/divs/divs.js"></script>
 		<script src="js/divs/listas.js"></script>
-		<script src="js/graficos/qualificacoes/grafico.js"></script>
-		<script src="js/graficos/qualificacoes/grafico_qualificacoes.js"></script>
+		<script src="js/divs/gerador_lista.js" type="text/javascript"></script>
+		<script src="js/graficos/qualificacoes/grafico.js" type="text/javascript"></script>
+		<script src="js/graficos/qualificacoes/grafico_qualificacoes.js" type="text/javascript"></script>
+		<script src="https://code.highcharts.com/highcharts.js" type="text/javascript"></script>
+		<script src="https://code.highcharts.com/modules/exporting.js" type="text/javascript"></script>
+		<script src="https://code.highcharts.com/modules/accessibility.js" type="text/javascript"></script>
 	</head>
 	<body>
 			<div id="cabecalho">
@@ -55,105 +59,21 @@
 					</p>
 			</div>
 			<div id="experiencias_graficos"></div>
+
 		<script>
-			let empresa = []
-			let cargo = []
-
-			let funcoes_cargo_0 = []
-			let funcoes_cargo_1 = []
-			let funcoes_cargo_2 = []
-			
-			function list (nome_id_div_pai, empresa, cargo, funcoes_cargo, nome_classe,){
-
-				let div = document.createElement('div')
-				let strong = document.createElement('strong')
-				let span = document.createElement('span')
-				let line = document.createElement('ul')
-				let br = document.createElement('br')
-
-				strong.innerHTML = empresa
-				span.innerHTML = cargo
-
-				nome_id_div_pai.appendChild(div)
-
-				div.appendChild(strong)
-				div.appendChild(br)
-				div.appendChild(span)
-				div.appendChild(line)
-
-				div.setAttribute('class', nome_classe)
-
-				for (var i = 0; i < funcoes_cargo.length; i++ ){
-					let lilist = document.createElement('li')
-					lilist.innerHTML = funcoes_cargo[i]
-					line.appendChild(lilist)
-				}
-			}
-			function div_pai(nome_id_div_pai, id){
-
-				let div = document.createElement('div')
-				nome_id_div_pai.appendChild(div)
-				div.setAttribute('id', id)
-
-				return(id)
-				}
-			
-			function div(nome_id_div_pai, titulo_secao, id){
-
-				let div = document.createElement('div')
-				let h2 = document.createElement('h2')
-
-				h2.innerHTML = titulo_secao
-
-				nome_id_div_pai.appendChild(div)
-				div.appendChild(h2)
-
-				div.setAttribute('id', id)
-
-				return(id)
-			}
-
-			empresa.push(
-				'Ministério do Desenvolvimento Regional (MIDR) | 2023 - Atual',
-				'UCB - Universidade Católica de Brasília | 2021 - 2022',
-				'BS - Business Services | 2019 - 2021',
-			)
-			cargo.push(
-				'Estagiário TI',
-				'Auxiliar Administrativo / Tutoria EAD',
-				'Operador de Telemarketing',
-			)
-
-			funcoes_cargo_0.push(
-				'Auxiliar nos processos relacionados ao desenvolvimento de sistemas relativos a SEDEC;',
-				'Apoiar, Extrair e Analisar dados de interesse da secretaria, com acompanhamento direto do responsável técnico.'
-			)
-			funcoes_cargo_1.push(
-				'Acompanhar e motivar a performance e a frequência dos alunos no Ambiente Virtual de Aprendizagem;',
-				'Apoiar os discentes no acesso às suas atividades;',
-				'Realizar atendimento e esclarecimento de dúvidas técnicas via email, presencial ou por telefone;',
-				'Manter e alimentar as planilhas, relatórios, dashboards e outros documentos solicitados pela gestão.'
-			)
-			funcoes_cargo_2.push(
-				'Atendimento ativo e receptivo via Telefone ou chat;',
-				'Atualização e cadastramento de clientes via preenchimento de dados;',
-				'Condução da solução de tratativas online, dirimindo dúvidas ou encaminhando para o superior;',
-				'Elaboração de relatórios de atendimento e/ou resolução das tratativas online.'
-			)
-
-			let div_experiecias = div(document.getElementById('experiencias_graficos'), 'Experiencias', 'experiencias')
+			const div_experiecias = div(document.getElementById('experiencias_graficos'), 'Experiencias', 'experiencias')
 
 			list(document.getElementById(div_experiecias), empresa[0], cargo[0], funcoes_cargo_0, 'experiencias_lista')
 			list(document.getElementById(div_experiecias), empresa[1], cargo[1], funcoes_cargo_1, 'experiencias_lista')
 			list(document.getElementById(div_experiecias), empresa[2], cargo[2], funcoes_cargo_2, 'experiencias_lista')
 
-			let div_graficos = div_pai(document.getElementById('experiencias_graficos'), 'graficos')
+			const div_graficos = div_pai(document.getElementById('experiencias_graficos'), 'graficos')
 
-			let div_qualificacoes = div_pai(document.getElementById(div_graficos), 'qualificacoes')
+			const div_qualificacoes = div_pai(document.getElementById(div_graficos), 'qualificacoes')
 
 			div(document.getElementById(div_qualificacoes), 'Qualificações', 'qualificacoestitle')
 
-			let div_graficos_qualificacoes = div_pai(document.getElementById(div_qualificacoes), 'graficos_qualificacoes')
+			const div_graficos_qualificacoes = div_pai(document.getElementById(div_qualificacoes), 'graficos_qualificacoes')
 			div(document.getElementById(div_graficos_qualificacoes), 'SQL', 'SQL')
 			div(document.getElementById(div_graficos_qualificacoes), 'Python', 'Python')
 			div(document.getElementById(div_graficos_qualificacoes), 'Power BI', 'Power_bi')
@@ -163,50 +83,14 @@
 			div(document.getElementById(div_graficos), 'Idiomas', 'idiomas')
 			div(document.getElementById(div_graficos), 'Outras Qualificações', 'outras_qualificacoes')
 		</script>
-		<!-- instaciar a biblioteca highcharts para criar um grafico Semi circle donut-->
-		<script src="https://code.highcharts.com/highcharts.js"></script>
-		<script src="https://code.highcharts.com/modules/exporting.js"></script>
-		<script src="https://code.highcharts.com/modules/accessibility.js"></script>
 		<script>
-			function createChart(chartId, titleText, data) {
-				Highcharts.chart(chartId, {
-					chart: { type: 'pie', width: 130, height: 170, backgroundColor: null },
-					title: {
-						text: titleText,
-						align: 'center',
-						verticalAlign: 'bottom',
-						y: -60,
-						style: { fontSize: '14px', backgroundColor: null }
-					},
-					tooltip: { pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>' },
-					accessibility: { point: { valueSuffix: '%' } },
-					plotOptions: {
-						pie: {
-							dataLabels: { enabled: true, distance: -50, style: { fontWeight: 'bold', color: 'white' } },
-							startAngle: -90,
-							endAngle: 90,
-							center: ['50%', '75%'],
-							size: '150%'
-						}
-					},
-					exporting: { enabled: false },
-					series: [{
-						type: 'pie',
-						name: titleText,
-						innerSize: '70%',
-						data: data
-					}],
-					credits: { enabled: false }
-				});
-			}
-		
 			createChart('SQL', 'SQL', [
 				['', 90.0],
-				{ name: 'Void', y: 10.0, dataLabels: { enabled: false } }
+				{ name: 'Void', y: 10.0, dataLabels: { enabled: false }}
 			]);
 			createChart('Python', 'Python', [
-				['', 75.0],
-				{ name: 'Void', y: 35.0, dataLabels: { enabled: false } }
+				['', 70.0],
+				{ name: 'Void', y: 30.0, dataLabels: { enabled: false } }
 			]);
 			createChart('Power_bi', 'Power BI', [
 				['', 80.0],
@@ -216,6 +100,7 @@
 				['', 50.0],
 				{ name: 'Void', y: 50.0, dataLabels: { enabled: false } }
 			]);
+
 		</script>
 	</body>
 </html>

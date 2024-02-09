@@ -1,4 +1,4 @@
-function createChart(chartId, titleText, data) {
+function createPie(chartId, titleText, data) {
     Highcharts.chart(chartId, {
         chart: { type: 'pie', width: 130, height: 170, backgroundColor: null },
         title: {

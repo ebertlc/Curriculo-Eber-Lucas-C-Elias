@@ -8,6 +8,7 @@ const funcoes_cargo_2 = []
 empresa.push(
     'Ministério do Desenvolvimento Regional (MIDR) | 2023 - Atual',
     'UCB - Universidade Católica de Brasília | 2021 - 2022',
+    'UCB - Universidade Católica de Brasília | 2021 - 2022',
     'BS - Business Services | 2019 - 2021',
 )
 cargo.push(

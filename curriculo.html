@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eber Lucas Cerqueira Elias — Currículo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============================================================
+       DESIGN TOKENS — mude o tema inteiro aqui
+       ============================================================ */
+    :root {
+      --color-bg:         #f5f5f5;
+      --color-surface:    #ffffff;
+      --color-text:       #111111;
+      --color-muted:      #555555;
+      --color-date:       #555555;   /* datas — cinza como no PDF original */
+      --color-divider:    #cccccc;
+      --color-tag-border: #aaaaaa;
+
+      --font: 'Inter', Arial, sans-serif;
+
+      --fs-name:     28px;
+      --fs-role:     13px;
+      --fs-contact:  11.5px;
+      --fs-section:  11px;
+      --fs-job:      11.5px;
+      --fs-body:     11.5px;
+      --fs-small:    10.5px;
+
+      --gap-section: 14px;
+      --gap-item:    10px;
+      --page-h:      48px;
+      --page-v:      36px;
+    }
+
+    [data-theme="dark"] {
+      --color-bg:         #0f172a;
+      --color-surface:    #1e293b;
+      --color-text:       #f1f5f9;
+      --color-muted:      #94a3b8;
+      --color-date:       #94a3b8;
+      --color-divider:    #334155;
+      --color-tag-border: #475569;
+    }
+
+    /* ============================================================
+       RESET
+       ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--font);
+      font-size: var(--fs-body);
+      background: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.55;
+      transition: background 0.25s, color 0.25s;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    ul { list-style: none; }
+
+    /* ============================================================
+       UI CONTROLS
+       ============================================================ */
+    .ui-bar {
+      position: fixed;
+      top: 14px; right: 14px;
+      display: flex; gap: 8px;
+      z-index: 200;
+    }
+
+    .ui-btn {
+      display: inline-flex; align-items: center; gap: 5px;
+      padding: 6px 13px;
+      border-radius: 999px;
+      border: 1px solid var(--color-divider);
+      background: var(--color-surface);
+      color: var(--color-text);
+      font-family: var(--font); font-size: 11px; font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+      transition: box-shadow 0.15s;
+    }
+    .ui-btn:hover { box-shadow: 0 3px 8px rgba(0,0,0,0.15); }
+
+    /* ============================================================
+       PAGE SHELL
+       ============================================================ */
+    .page {
+      max-width: 780px;
+      margin: 32px auto;
+      padding: var(--page-v) var(--page-h);
+      background: var(--color-surface);
+      box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+    }
+
+    /* ============================================================
+       HEADER
+       ============================================================ */
+    .hd-name {
+      font-size: var(--fs-name);
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      line-height: 1.1;
+    }
+
+    .hd-role {
+      font-size: var(--fs-role);
+      font-weight: 400;
+      color: var(--color-muted);
+      margin-top: 3px;
+    }
+
+    .contact-row {
+      display: flex; flex-wrap: wrap;
+      margin-top: 12px; gap: 5px 0;
+    }
+
+    .contact-cell {
+      display: inline-flex; align-items: center; gap: 5px;
+      font-size: var(--fs-contact);
+      color: var(--color-muted);
+      background: var(--color-bg);
+      border: 1px solid var(--color-divider);
+      padding: 3px 10px;
+      margin-right: 6px; margin-bottom: 5px;
+      white-space: nowrap;
+    }
+    .contact-cell svg { flex-shrink: 0; opacity: 0.65; }
+
+    /* ============================================================
+       SECTIONS
+       ============================================================ */
+    .section { margin-top: var(--gap-section); }
+
+    .section-title {
+      font-size: var(--fs-section);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      display: inline-block;          /* faz o border ter a largura do texto */
+      padding-bottom: 3px;
+      border-bottom: 2.5px solid var(--color-text);  /* mais grossa, cor sólida */
+      margin-bottom: 9px;
+    }
+
+    .section-text {
+      font-size: var(--fs-body);
+      color: var(--color-muted);
+      line-height: 1.6;
+    }
+
+    /* ============================================================
+       SKILLS
+       ============================================================ */
+    .skills-row { display: flex; flex-wrap: wrap; gap: 5px 6px; }
+
+    .skill-tag {
+      font-size: var(--fs-small);
+      padding: 2px 10px;
+      border: 1px solid var(--color-tag-border);
+      color: var(--color-text);
+      background: transparent;
+    }
+
+    /* ============================================================
+       EXPERIENCE
+       ============================================================ */
+    .exp-list { display: flex; flex-direction: column; gap: var(--gap-item); }
+
+    .exp-job {
+      font-size: var(--fs-job);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      display: block;
+    }
+
+    /* Empresa e data ficam na mesma linha, separados por " | " */
+    .exp-company {
+      font-size: var(--fs-small);
+      color: var(--color-muted);
+      font-style: italic;
+      margin-top: 1px; margin-bottom: 5px;
+    }
+
+    .exp-date {
+      font-style: normal;
+      font-weight: 400;
+      color: var(--color-date);
+    }
+
+    .exp-bullets {
+      padding-left: 14px;
+      list-style: disc;
+      color: var(--color-muted);
+    }
+    .exp-bullets li { font-size: var(--fs-body); line-height: 1.5; margin-bottom: 1px; }
+
+    /* ============================================================
+       EDUCATION
+       ============================================================ */
+    .edu-degree {
+      font-size: var(--fs-job);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .edu-institution {
+      font-size: var(--fs-small);
+      color: var(--color-muted);
+      margin-top: 1px;
+    }
+    .edu-item + .edu-item { margin-top: 7px; }
+
+    /* ============================================================
+       CERTIFICATIONS / AWARDS
+       ============================================================ */
+    .plain-list li {
+      font-size: var(--fs-body);
+      color: var(--color-muted);
+      padding-left: 12px;
+      position: relative;
+      margin-bottom: 2px;
+    }
+    .plain-list li::before { content: '•'; position: absolute; left: 0; color: var(--color-text); }
+
+    /* ============================================================
+       LANGUAGES
+       ============================================================ */
+    .lang-row { display: flex; gap: 0 60px; flex-wrap: wrap; }
+    .lang-pair { display: flex; flex-direction: column; gap: 2px; }
+    .lang-name {
+      font-size: var(--fs-body); font-weight: 700;
+      padding-left: 14px; position: relative;
+    }
+    .lang-name::before { content: '•'; position: absolute; left: 0; font-weight: 700; }
+    .lang-level { font-size: var(--fs-small); color: var(--color-muted); padding-left: 14px; }
+
+    /* ============================================================
+       RESPONSIVE
+       ============================================================ */
+    @media (max-width: 620px) {
+      :root { --page-h: 20px; --page-v: 24px; --fs-name: 22px; }
+      .page { margin: 0; box-shadow: none; }
+      .ui-btn span { display: none; }
+    }
+
+    /* ============================================================
+       PRINT
+       ============================================================ */
+    @media print {
+      :root {
+        --fs-name: 22pt; --fs-role: 9.5pt; --fs-contact: 8.5pt;
+        --fs-section: 8pt; --fs-job: 8.5pt; --fs-body: 8.5pt; --fs-small: 7.5pt;
+        --gap-section: 9pt; --gap-item: 7pt;
+        --page-h: 0; --page-v: 0;
+        --color-bg: #fff; --color-surface: #fff;
+        --color-text: #000; --color-muted: #444;
+        --color-date: #444; --color-divider: #bbb; --color-tag-border: #888;
+      }
+      [data-theme="dark"] {
+        --color-bg: #fff; --color-surface: #fff;
+        --color-text: #000; --color-muted: #444;
+        --color-date: #444; --color-divider: #bbb; --color-tag-border: #888;
+      }
+      @page { size: A4; margin: 14mm 18mm; }
+
+      html, body { background: white !important; }
+      .ui-bar { display: none !important; }
+      .page { margin: 0 !important; padding: 0 !important; box-shadow: none !important; max-width: 100% !important; }
+
+      .section, .exp-item, .edu-item { page-break-inside: avoid; break-inside: avoid; }
+      .section-skills { page-break-after: avoid; break-after: avoid; }
+      a::after { content: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- UI CONTROLS -->
+  <div class="ui-bar">
+    <button class="ui-btn" id="theme-toggle" title="Alternar tema">
+      <svg id="theme-icon" xmlns="http://www.w3.org/2000/svg" width="13" height="13"
+           viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+           stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="5"/>
+        <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+        <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+      </svg>
+      <span>Tema</span>
+    </button>
+    <button class="ui-btn" id="print-btn" title="Baixar PDF">
+      <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24"
+           fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+        <polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+      </svg>
+      <span>Baixar PDF</span>
+    </button>
+  </div>
+
+  <!-- CURRÍCULO -->
+  <main class="page" id="cv-root"></main>
+
+  <!-- ============================================================
+       DADOS DO CURRÍCULO
+       Para atualizar: edite apenas este objeto CV abaixo.
+       Não precisa tocar em mais nada no arquivo.
+       ============================================================ -->
+  <script>
+    const CV = {
+
+      /* ── Cabeçalho ─────────────────────────────── */
+      nome:  'Eber Lucas Cerqueira Elias',
+      cargo: 'DBA Pleno | Analista de BI Pleno',
+
+      contato: [
+        /* linha 1 */
+        { icone: 'phone',    texto: '(61) 99562-6861' },
+        { icone: 'mail',     texto: 'eberteclas@gmail.com',            href: 'mailto:eberteclas@gmail.com' },
+        { icone: 'location', texto: 'Brasília, DF 72748001' },
+        /* linha 2 */
+        { icone: 'linkedin', texto: 'https://www.linkedin.com/in/eber-tlc/', href: 'https://www.linkedin.com/in/eber-tlc/' },
+        { icone: 'github',   texto: 'https://github.com/ebertlc',            href: 'https://github.com/ebertlc' },
+      ],
+
+      /* ── Resumo ─────────────────────────────────── */
+      resumo: `Entusiasta apaixonado pela tecnologia, busco o aprimoramento da minha experiência no
+        gerenciamento de bancos de dados e Business Intelligence (BI). Tenho como objetivo me
+        consolidar nesse segmento e continuar a expandir meus conhecimentos. Comprometido em me
+        manter atualizado com as tendências do mercado, tenho participado de diversos cursos para
+        aprimorar minhas habilidades em consultas estruturadas, administração de Sistemas de
+        Gerenciamento de Banco de Dados (SGBDs), criação de dashboards e Data Storytelling.`,
+
+      /* ── Skills ─────────────────────────────────── */
+      skills: ['SQL', 'Python', 'Power BI', 'Microsoft Excel', 'Apache Spark', 'Data Storytelling', 'PL/SQL'],
+
+      /* ── Experiências ───────────────────────────── */
+      experiencias: [
+        {
+          cargo:   'Residente em Tecnologia da Informação – Infraestrutura, Brasília, DF',
+          empresa: 'MPDFT – Ministério Público do Distrito Federal e Territórios',
+          periodo: 'Agosto 2024–Atual',
+          itens: [
+            'Execução de scripts e migração de bancos (backup/restore) para novos servidores;',
+            'Gerenciamento de backups/restores manuais (SGBD/Commvault) e snapshots para testes;',
+            'Criação de logins/usuários, gerenciamento de permissões e auditoria de operações;',
+            'Configuração e manutenção de clusters, replicação e AlwaysOn (failover, réplicas);',
+            'Instalação, atualização e criação/desativação de objetos (bancos, jobs, linked servers);',
+            'Criação e execução de scripts (banco, SO, Ansible) para automação de tarefas;',
+            'Desenvolvimento, publicação e manutenção de pacotes ETL;',
+            'Resolução de incidentes e suporte a outras equipes em questões de banco de dados;',
+            'Exportação/importação de dados e configuração de conexões ODBC;',
+            'Criação e atualização de procedimentos e documentação técnica (Wiki, manuais);',
+          ]
+        },
+        {
+          cargo:   'Auxiliar Administrativo, Brasília, DF',
+          empresa: 'MIDR – Ministério do Desenvolvimento Regional',
+          periodo: 'Novembro 2023–Agosto 2024',
+          itens: [
+            'Auxiliar e gerenciar nos processos relacionados ao desenvolvimento de sistemas relativos a SEDEC;',
+            'Apoiar, Extrair e Analisar dados de interesse da secretaria;',
+            'Apoiar na elaboração de relatórios e apresentações de dados;',
+            'Manter e executar rotinas de backup e recuperação de dados;',
+            'Criar e executar scripts de automação de tarefas e atualizações em banco de dados ORACLE e Postgres;',
+            'Criar e manter documentação técnica dos sistemas e processos da SEDEC.',
+          ]
+        },
+        {
+          cargo:   'Estagiário TI, Brasília, DF',
+          empresa: 'MIDR – Ministério do Desenvolvimento Regional',
+          periodo: 'Abril 2023–Novembro 2023',
+          itens: [
+            'Auxiliar nos processos relacionados ao desenvolvimento de sistemas relativos a SEDEC;',
+            'Apoiar, Extrair e Analisar dados de interesse da secretaria, com acompanhamento direto do responsável técnico.',
+          ]
+        },
+        {
+          cargo:   'Auxiliar Administrativo / Tutoria EAD, Taguatinga, DF',
+          empresa: 'UCB – Universidade Católica de Brasília',
+          periodo: 'Outubro 2021–Janeiro 2022',
+          itens: [
+            'Acompanhar e motivar a performance e a frequência dos alunos no Ambiente Virtual de Aprendizagem;',
+            'Apoiar os discentes no acesso às suas atividades;',
+            'Realizar atendimento e esclarecimento de dúvidas técnicas via e-mail, presencial ou por telefone;',
+            'Manter e alimentar as planilhas, relatórios, dashboards e outros documentos solicitados pela gestão.',
+          ]
+        },
+      ],
+
+      /* ── Formação ───────────────────────────────── */
+      formacao: [
+        {
+          curso:       'Análise e Desenvolvimento de Sistemas, Taguatinga',
+          instituicao: 'Centro Universitário Estácio de Brasília, Julho 2024',
+        },
+      ],
+
+      /* ── Certificações ──────────────────────────── */
+      certificacoes: [
+        'Inteligência Artificial aplicada à Visão Computacional',
+      ],
+
+      /* ── Idiomas ────────────────────────────────── */
+      idiomas: [
+        { idioma: 'Inglês',   nivel: 'Conversação' },
+        { idioma: 'Espanhol', nivel: 'Intermediário' },
+      ],
+
+      /* ── Premiações ─────────────────────────────── */
+      premiacoes: [
+        '1° Lugar – Hackathon Campus Party Brasília 2022',
+      ],
+    };
+  </script>
+
+  <!-- ============================================================
+       RENDERIZADOR — não precisa editar daqui para baixo
+       ============================================================ -->
+  <script>
+    /* ── Ícones SVG inline ──────────────────────────────────────── */
+    const ICONS = {
+      phone: `<svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L9.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>`,
+      mail:  `<svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>`,
+      location: `<svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>`,
+      linkedin: `<svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>`,
+      github:  `<svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>`,
+    };
+
+    /* ── Helpers ────────────────────────────────────────────────── */
+    function el(tag, attrs = {}, ...children) {
+      const e = document.createElement(tag);
+      for (const [k, v] of Object.entries(attrs)) {
+        if (k === 'class') e.className = v;
+        else e.setAttribute(k, v);
+      }
+      for (const c of children) {
+        if (typeof c === 'string') e.insertAdjacentHTML('beforeend', c);
+        else if (c) e.appendChild(c);
+      }
+      return e;
+    }
+
+    function section(titulo, className = '') {
+      const sec = el('section', { class: 'section' + (className ? ' ' + className : '') });
+      sec.appendChild(el('h2', { class: 'section-title' }, titulo));
+      return sec;
+    }
+
+    function plainList(itens) {
+      const ul = el('ul', { class: 'plain-list' });
+      itens.forEach(t => ul.appendChild(el('li', {}, t)));
+      return ul;
+    }
+
+    /* ── Renderizador principal ─────────────────────────────────── */
+    function renderCV(cv, root) {
+
+      /* CABEÇALHO */
+      const header = el('header');
+      header.appendChild(el('h1', { class: 'hd-name' }, cv.nome));
+      header.appendChild(el('p',  { class: 'hd-role' }, cv.cargo));
+
+      const addr = el('address', { style: 'font-style:normal;' });
+
+      /* Contato — linha 1 (telefone, email, localização) e linha 2 (linkedin, github) */
+      const row1 = el('div', { class: 'contact-row' });
+      const row2 = el('div', { class: 'contact-row' });
+      cv.contato.forEach((c, i) => {
+        const cell = el('span', { class: 'contact-cell' });
+        cell.insertAdjacentHTML('beforeend', ICONS[c.icone] || '');
+        if (c.href) {
+          cell.appendChild(el('a', { href: c.href, target: '_blank', rel: 'noopener' }, c.texto));
+        } else {
+          cell.insertAdjacentHTML('beforeend', c.texto);
+        }
+        (i < 3 ? row1 : row2).appendChild(cell);
+      });
+      addr.appendChild(row1);
+      addr.appendChild(row2);
+      header.appendChild(addr);
+      root.appendChild(header);
+
+      /* RESUMO */
+      const secResumo = section('Resumo Profissional');
+      secResumo.appendChild(el('p', { class: 'section-text' }, cv.resumo.trim()));
+      root.appendChild(secResumo);
+
+      /* SKILLS */
+      const secSkills = section('Skills', 'section-skills');
+      const skillRow = el('div', { class: 'skills-row' });
+      cv.skills.forEach(s => skillRow.appendChild(el('span', { class: 'skill-tag' }, s)));
+      secSkills.appendChild(skillRow);
+      root.appendChild(secSkills);
+
+      /* EXPERIÊNCIAS */
+      const secExp = section('Experiências');
+      const expList = el('div', { class: 'exp-list' });
+
+      cv.experiencias.forEach(exp => {
+        const art = el('article', { class: 'exp-item' });
+
+        // Cargo em negrito/maiúsculo
+        art.appendChild(el('span', { class: 'exp-job' }, exp.cargo));
+
+        // Empresa | Período na mesma linha
+        const company = el('p', { class: 'exp-company' });
+        company.insertAdjacentHTML('beforeend',
+          `${exp.empresa} <span class="exp-date">| ${exp.periodo}</span>`
+        );
+        art.appendChild(company);
+
+        const ul = el('ul', { class: 'exp-bullets' });
+        exp.itens.forEach(item => ul.appendChild(el('li', {}, item)));
+        art.appendChild(ul);
+
+        expList.appendChild(art);
+      });
+
+      secExp.appendChild(expList);
+      root.appendChild(secExp);
+
+      /* FORMAÇÃO */
+      const secForm = section('Formação');
+      cv.formacao.forEach(f => {
+        const div = el('div', { class: 'edu-item' });
+        div.appendChild(el('p', { class: 'edu-degree' }, f.curso));
+        div.appendChild(el('p', { class: 'edu-institution' }, f.instituicao));
+        secForm.appendChild(div);
+      });
+      root.appendChild(secForm);
+
+      /* CERTIFICAÇÕES */
+      const secCert = section('Certificações');
+      secCert.appendChild(plainList(cv.certificacoes));
+      root.appendChild(secCert);
+
+      /* IDIOMAS */
+      const secLang = section('Idiomas');
+      const langRow = el('div', { class: 'lang-row' });
+      cv.idiomas.forEach(l => {
+        const div = el('div', { class: 'lang-pair' });
+        div.insertAdjacentHTML('beforeend',
+          `<span class="lang-name">${l.idioma}</span><span class="lang-level">${l.nivel}</span>`
+        );
+        langRow.appendChild(div);
+      });
+      secLang.appendChild(langRow);
+      root.appendChild(secLang);
+
+      /* PREMIAÇÕES */
+      const secPrem = section('Premiações');
+      secPrem.appendChild(plainList(cv.premiacoes));
+      root.appendChild(secPrem);
+    }
+
+    /* Executa */
+    renderCV(CV, document.getElementById('cv-root'));
+
+    /* ── Dark mode + PDF ────────────────────────────────────────── */
+    const html   = document.documentElement;
+    const toggle = document.getElementById('theme-toggle');
+    const icon   = document.getElementById('theme-icon');
+
+    const sunPath = `<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>`;
+    const moonPath = `<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>`;
+
+    const saved = localStorage.getItem('cv-theme');
+    if (saved === 'dark') { html.setAttribute('data-theme', 'dark'); icon.innerHTML = moonPath; }
+
+    toggle.addEventListener('click', () => {
+      const dark = html.getAttribute('data-theme') === 'dark';
+      html.setAttribute('data-theme', dark ? 'light' : 'dark');
+      icon.innerHTML = dark ? sunPath : moonPath;
+      localStorage.setItem('cv-theme', dark ? 'light' : 'dark');
+    });
+
+    document.getElementById('print-btn').addEventListener('click', () => {
+      const prev = html.getAttribute('data-theme');
+      html.setAttribute('data-theme', 'light');
+      window.print();
+      html.setAttribute('data-theme', prev);
+    });
+  </script>
+
+</body>
+</html>

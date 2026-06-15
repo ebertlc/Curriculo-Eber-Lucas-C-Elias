@@ -1,0 +1,112 @@
+const CV = {
+
+  /* ── Cabeçalho ─────────────────────────────── */
+  nome: 'Eber Lucas Cerqueira Elias',
+  cargo: 'DBA Pleno | Analista de BI Pleno',
+
+  contato: [
+    /* linha 1 */
+    { icone: 'phone', texto: '(61) 99562-6861' },
+    { icone: 'mail', texto: 'eberteclas@gmail.com', href: 'mailto:eberteclas@gmail.com' },
+    { icone: 'location', texto: 'Brasília, DF 72748001' },
+    /* linha 2 */
+    { icone: 'linkedin', texto: 'https://www.linkedin.com/in/eber-tlc/', href: 'https://www.linkedin.com/in/eber-tlc/' },
+    { icone: 'github', texto: 'https://github.com/ebertlc', href: 'https://github.com/ebertlc' },
+  ],
+
+  /* ── Resumo ─────────────────────────────────── */
+  resumoVisivel: false,
+  resumo: `DBA Pleno com atuação em órgãos do Governo Federal (MPDFT e MIDR), onde desenvolvi sólida experiência em administração de 
+  bancos de dados SQL Server, Oracle e PostgreSQL. Tenho expertise em alta disponibilidade com AlwaysOn e replicação, automação com 
+  scripts T-SQL, PL/SQL e Ansible, gerenciamento de backups com Commvault e desenvolvimento de pacotes ETL. Busco continuar me 
+  aprofundando na administração de dados em ambientes complexos e de alta demanda, contribuindo com segurança, performance e 
+  confiabilidade.`,
+
+  /* ── Skills ─────────────────────────────────── */
+  skills: ['SQL', 'Python', 'SQLServer', 'MySQL', 'MongoDB', 'Power BI', 'PL/SQL', 'AWS', 'Linux', 'PostgreSQL', ' Oracle', 'Windows Server'],
+
+  /* ── Experiências ───────────────────────────── */
+  experiencias: [
+    {
+      cargo: 'Residente em Tecnologia da Informação – DBA, Brasília, DF',
+      empresa: 'MPDFT – Ministério Público do Distrito Federal e Territórios',
+      periodo: 'Agosto 2024 – Atual',
+      itens: [
+        'Execução de scripts e migração de bancos (backup/restore) para novos servidores;',
+        'Gerenciamento de backups/restores manuais (SGBD/Commvault) e snapshots para testes;',
+        'Criação de logins/usuários, gerenciamento de permissões e auditoria de operações;',
+        'Configuração e manutenção de clusters, replicação e AlwaysOn (failover, réplicas);',
+        'Instalação, atualização e criação/desativação de objetos (bancos, jobs, linked servers);',
+        'Criação e execução de scripts (banco, SO, Ansible) para automação de tarefas;',
+        'Desenvolvimento, publicação e manutenção de pacotes ETL;',
+        'Resolução de incidentes e suporte a outras equipes em questões de banco de dados;',
+        'Exportação/importação de dados e configuração de conexões ODBC;',
+        'Criação e atualização de procedimentos e documentação técnica (Wiki, manuais);',
+      ]
+    },
+    {
+      cargo: 'Auxiliar Tratamento de Dados, Brasília, DF',
+      empresa: 'MIDR – Ministério do Desenvolvimento Regional',
+      periodo: 'Novembro 2023 – Agosto 2024',
+      itens: [
+        'Auxiliar e gerenciar nos processos relacionados ao desenvolvimento de sistemas relativos a SEDEC;',
+        'Apoiar, Extrair e Analisar dados de interesse da secretaria;',
+        'Apoiar na elaboração de relatórios e apresentações de dados;',
+        'Manter e executar rotinas de backup e recuperação de dados;',
+        'Criar e executar scripts de automação de tarefas e atualizações em banco de dados ORACLE e Postgres;',
+        'Criar e manter documentação técnica dos sistemas e processos da SEDEC.',
+      ]
+    },
+    {
+      cargo: 'Estagiário TI, Brasília, DF',
+      empresa: 'MIDR – Ministério do Desenvolvimento Regional',
+      periodo: 'Abril 2023 – Novembro 2023',
+      itens: [
+        'Auxiliar nos processos relacionados ao desenvolvimento de sistemas relativos a SEDEC;',
+        'Apoiar, Extrair e Analisar dados de interesse da secretaria, com acompanhamento direto do responsável técnico.',
+      ]
+    },
+    {
+      cargo: 'Tutor Acadêmico EAD, Taguatinga, DF',
+      empresa: 'UCB – Universidade Católica de Brasília',
+      periodo: 'Outubro 2021 – Janeiro 2022',
+      itens: [
+        'Acompanhar e motivar a performance e a frequência dos alunos no Ambiente Virtual de Aprendizagem;',
+        'Apoiar os discentes no acesso às suas atividades;',
+        'Realizar atendimento e esclarecimento de dúvidas técnicas via e-mail, presencial ou por telefone;',
+        'Manter e alimentar as planilhas, relatórios, dashboards e outros documentos solicitados pela gestão.',
+      ]
+    },
+  ],
+
+  /* ── Formação ───────────────────────────────── */
+  formacao: [
+    {
+      curso: 'Análise e Desenvolvimento de Sistemas, Taguatinga',
+      instituicao: 'Centro Universitário Estácio de Brasília, Julho 2024',
+    },
+  ],
+
+  /* ── Certificações ──────────────────────────── */
+  certificacoes: [
+    'Inteligência Artificial aplicada à Visão Computacional',
+    'MongoDB Overview: Core Concepts and Architecture',
+    'MongoDB Schema Design Patterns and Anti-patterns Skill Badge',
+    'From Relational Model (SQL) to MongoDB\'s Document Model',
+    'MongoDB Overview: Core Concepts and Architecture',
+    'PROGRAMAÇÃO PARA INTERNET',
+    'DESENVOLVIMENTO RÁPIDO DE APLICAÇÕES EM PYTHON PARA CLOUD, IOT E BIGDATA',
+    'Análise de dados como suporte à tomada de decisão'
+  ],
+
+  /* ── Idiomas ────────────────────────────────── */
+  idiomas: [
+    { idioma: 'Inglês', nivel: 'Conversação' },
+    { idioma: 'Espanhol', nivel: 'Intermediário' },
+  ],
+
+  /* ── Premiações ─────────────────────────────── */
+  premiacoes: [
+    '1° Lugar – Hackathon Campus Party Brasília 2022',
+  ],
+};

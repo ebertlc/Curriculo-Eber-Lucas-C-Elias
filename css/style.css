@@ -214,6 +214,7 @@ ul {
   display: flex;
   flex-direction: column;
   gap: var(--gap-item);
+  margin-top: var(--gap-item);
 }
 
 .exp-job {
@@ -222,6 +223,21 @@ ul {
   text-transform: uppercase;
   letter-spacing: 0.04em;
   display: block;
+}
+
+section:has(.exp-list) {
+  page-break-inside: auto;
+  break-inside: auto;
+}
+
+.exp-item {
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+.section-title {
+  orphans: 4;
+  widows: 4;
 }
 
 /* Empresa e data ficam na mesma linha, separados por " | " */

@@ -437,12 +437,17 @@ ul {
     page-break-inside: avoid;
     break-inside: avoid;
   }*/
- section:has(.exp-list) h2 {
+  section:has(.exp-list) h2 {
     page-break-after: avoid;
     break-after: avoid;
- }
+  }
 
   .exp-section-header {
+    page-break-inside: auto;
+    break-inside: auto;
+  }
+
+  .exp-item {
     page-break-inside: avoid;
     break-inside: avoid;
   }

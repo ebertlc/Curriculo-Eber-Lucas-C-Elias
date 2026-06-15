@@ -428,7 +428,7 @@ ul {
   }
 
 
-  section:has(.exp-list) {
+  /*section:has(.exp-list) {
     page-break-inside: auto;
     break-inside: auto;
   }
@@ -436,7 +436,11 @@ ul {
   .exp-item {
     page-break-inside: avoid;
     break-inside: avoid;
-  }
+  }*/
+ section:has(.exp-list) h2 {
+    page-break-after: avoid;
+    break-after: avoid;
+ }
 
   a::after {
     content: none !important;

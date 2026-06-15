@@ -438,6 +438,11 @@ ul {
     break-inside: avoid;
   }
 
+  .exp-section-header {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
   a::after {
     content: none !important;
   }

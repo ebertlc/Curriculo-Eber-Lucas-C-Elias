@@ -45,16 +45,16 @@ const CV = {
       ]
     },
     {
-      cargo: 'Auxiliar Tratamento de Dados, Brasília, DF',
+      cargo: 'Auxiliar De Tratamento de Dados, Brasília, DF',
       empresa: 'MIDR – Ministério do Desenvolvimento Regional',
       periodo: 'Novembro 2023 – Agosto 2024',
       itens: [
-        'Auxiliar e gerenciar nos processos relacionados ao desenvolvimento de sistemas relativos a SEDEC;',
-        'Apoiar, Extrair e Analisar dados de interesse da secretaria;',
-        'Apoiar na elaboração de relatórios e apresentações de dados;',
-        'Manter e executar rotinas de backup e recuperação de dados;',
-        'Criar e executar scripts de automação de tarefas e atualizações em banco de dados ORACLE e Postgres;',
-        'Criar e manter documentação técnica dos sistemas e processos da SEDEC.',
+        'Auxílio e gerenciamento nos processos relacionados ao desenvolvimento de sistemas relativos à SEDEC (Secretaria Nacional de Proteção e Defesa Civil);',
+        'Apoio, extração e análise de dados de interesse da secretaria;',
+        'Apoio na elaboração de relatórios e apresentações de dados;',
+        'Manutenção e execução de rotinas de backup e recuperação de dados;',
+        'Criação e execução de scripts de automação de tarefas e atualizações em banco de dados ORACLE e Postgres;',
+        'Criação e manutenção de documentação técnica dos sistemas e processos da SEDEC.'
       ]
     },
     {
@@ -62,8 +62,8 @@ const CV = {
       empresa: 'MIDR – Ministério do Desenvolvimento Regional',
       periodo: 'Abril 2023 – Novembro 2023',
       itens: [
-        'Auxiliar nos processos relacionados ao desenvolvimento de sistemas relativos a SEDEC;',
-        'Apoiar, Extrair e Analisar dados de interesse da secretaria, com acompanhamento direto do responsável técnico.',
+        'Auxílio nos processos relacionados ao desenvolvimento de sistemas relativos à SEDEC;',
+        'Apoio, extração e análise de dados de interesse da secretaria, com acompanhamento direto do responsável técnico.'
       ]
     },
     {
@@ -71,19 +71,19 @@ const CV = {
       empresa: 'UCB – Universidade Católica de Brasília',
       periodo: 'Outubro 2021 – Janeiro 2022',
       itens: [
-        'Acompanhar e motivar a performance e a frequência dos alunos no Ambiente Virtual de Aprendizagem;',
-        'Apoiar os discentes no acesso às suas atividades;',
-        'Realizar atendimento e esclarecimento de dúvidas técnicas via e-mail, presencial ou por telefone;',
-        'Manter e alimentar as planilhas, relatórios, dashboards e outros documentos solicitados pela gestão.',
+        'Acompanhamento e motivação da performance e frequência dos alunos no Ambiente Virtual de Aprendizagem;',
+        'Apoio aos discentes no acesso às suas atividades;',
+        'Realização de atendimento e esclarecimento de dúvidas técnicas via e-mail, presencial ou por telefone;',
+        'Manutenção e alimentação das planilhas, relatórios, dashboards e outros documentos solicitados pela gestão.'
       ]
-    },
+    }
   ],
 
   /* ── Formação ───────────────────────────────── */
   formacao: [
     {
       curso: 'Análise e Desenvolvimento de Sistemas, Taguatinga',
-      instituicao: 'Centro Universitário Estácio de Brasília, Julho 2024',
+      instituicao: 'Centro Universitário Estácio de Brasília, Concluído em: Julho 2024',
     },
   ],
 

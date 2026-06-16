@@ -74,29 +74,14 @@ function criarExpItem(exp) {
   }
 
   /* Indicadores — só na versão completa */
-  if (versaoCompleta && exp.indicadores) {
+  if (typeof versaoCompleta !== 'undefined' && versaoCompleta && exp.indicadores) {
     const ind = el('div', { class: 'exp-indicadores' });
-    // ind.appendChild(el('p', { class: 'exp-indicadores-title' }, 'Indicadores de Rendimento'));
     ind.appendChild(el('p', { class: 'exp-indicadores-text' }, exp.indicadores.trim()));
     art.appendChild(ind);
   }
 
   return art;
 }
-
-/*function criarExpItem(exp) {
-  const art = el('article', { class: 'exp-item' });
-  art.appendChild(el('span', { class: 'exp-job' }, exp.cargo));
-  const company = el('p', { class: 'exp-company' });
-  company.insertAdjacentHTML('beforeend',
-    `${exp.empresa} <span class="exp-date">| ${exp.periodo}</span>`
-  );
-  art.appendChild(company);
-  const ul = el('ul', { class: 'exp-bullets' });
-  exp.itens.forEach(item => ul.appendChild(el('li', {}, item)));
-  art.appendChild(ul);
-  return art;
-}*/
 
 /* ── Renderizador principal ─────────────────────────────────── */
 function renderCV(cv, root) {
@@ -190,7 +175,7 @@ function renderCV(cv, root) {
   cv.premiacoes.forEach(p => {
     const li = el('li', {});
     li.insertAdjacentHTML('beforeend', `<strong>${p.titulo}</strong>`);
-    if (versaoCompleta && p.descricao) {
+    if (typeof versaoCompleta !== 'undefined' && versaoCompleta && p.descricao) {
       li.insertAdjacentHTML('beforeend',
         `<span class="prem-desc">${p.descricao}</span>`
       );
@@ -201,39 +186,4 @@ function renderCV(cv, root) {
   root.appendChild(secPrem);
 }
 
-let versaoCompleta = false;
-
 renderCV(CV, document.getElementById('cv-root'));
-
-/* ── Dark mode + PDF ────────────────────────────────────────── */
-const html = document.documentElement;
-const toggle = document.getElementById('theme-toggle');
-const icon = document.getElementById('theme-icon');
-
-const sunPath = `<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>`;
-const moonPath = `<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>`;
-
-const saved = localStorage.getItem('cv-theme');
-if (saved === 'dark') { html.setAttribute('data-theme', 'dark'); icon.innerHTML = moonPath; }
-
-toggle.addEventListener('click', () => {
-  const dark = html.getAttribute('data-theme') === 'dark';
-  html.setAttribute('data-theme', dark ? 'light' : 'dark');
-  icon.innerHTML = dark ? sunPath : moonPath;
-  localStorage.setItem('cv-theme', dark ? 'light' : 'dark');
-});
-
-document.getElementById('print-btn').addEventListener('click', () => {
-  const prev = html.getAttribute('data-theme');
-  html.setAttribute('data-theme', 'light');
-  window.print();
-  html.setAttribute('data-theme', prev);
-});
-
-document.getElementById('versao-btn').addEventListener('click', () => {
-  versaoCompleta = !versaoCompleta;
-  document.getElementById('versao-btn').querySelector('span').textContent =
-    versaoCompleta ? 'Simplificado' : 'Completo';
-  document.getElementById('cv-root').innerHTML = '';
-  renderCV(CV, document.getElementById('cv-root'));
-});

@@ -53,15 +53,15 @@
             <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
           </svg>
           <span>Completo</span>
-          <button class="ui-btn" id="print-btn" title="Baixar PDF">
-            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none"
-              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-              <polyline points="7 10 12 15 17 10" />
-              <line x1="12" y1="15" x2="12" y2="3" />
-            </svg>
-            <span>Baixar PDF</span>
-          </button>
+        </button>
+        <button class="ui-btn" id="print-btn" title="Baixar PDF">
+          <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+            <polyline points="7 10 12 15 17 10" />
+            <line x1="12" y1="15" x2="12" y2="3" />
+          </svg>
+          <span>Baixar PDF</span>
         </button>
       </div>
     </div>
@@ -73,46 +73,7 @@
   <!-- SCRIPTS -->
   <script src="js/portugues_data.js"></script>
   <script src="js/main.js"></script>
-  <script>
-    const langSelect = document.getElementById('lang-select');
-    const savedLang = localStorage.getItem('cv-lang') || 'pt';
-    langSelect.value = savedLang;
-
-    function loadLang(lang) {
-      const scriptId = 'lang-data-script';
-      const old = document.getElementById(scriptId);
-      if (old) old.remove();
-
-      const script = document.createElement('script');
-      script.id = scriptId;
-      script.src = lang === 'en' ? 'js/english_data.js' : 'js/portugues_data.js';
-      script.onload = () => {
-        document.getElementById('cv-root').innerHTML = '';
-        renderCV(CV, document.getElementById('cv-root'));
-      };
-      document.body.appendChild(script);
-      localStorage.setItem('cv-lang', lang);
-    }
-
-    if (savedLang !== 'pt') loadLang(savedLang);
-
-    langSelect.addEventListener('change', (e) => loadLang(e.target.value));
-
-    // Funcionalidade do Menu Suspenso (Engrenagem)
-    const settingsBtn = document.getElementById('settings-btn');
-    const dropdownMenu = document.getElementById('dropdown-menu');
-
-    settingsBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      dropdownMenu.classList.toggle('show');
-    });
-
-    document.addEventListener('click', (e) => {
-      if (!dropdownMenu.contains(e.target) && e.target !== settingsBtn) {
-        dropdownMenu.classList.remove('show');
-      }
-    });
-  </script>
+  <script src="js/ui.js"></script>
 </body>
 
 </html>

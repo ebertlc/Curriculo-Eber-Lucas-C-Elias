@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EberLucasCElias_v05</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
+    rel="stylesheet" />
+  <style>
+    /* ============================================================
+   DESIGN TOKENS — mude o tema inteiro aqui
+   ============================================================ */
+    :root {
+      --color-bg: #f5f5f5;
+      --color-surface: #ffffff;
+      --color-text: #111111;
+      --color-muted: #555555;
+      --color-date: #555555;
+      --color-divider: #cccccc;
+      --color-tag-border: #aaaaaa;
+
+      --font: 'Inter', Arial, sans-serif;
+
+      --fs-name: 34px;
+      --fs-role: 12.5px;
+      --fs-contact: 11px;
+      --fs-section: 13px;
+      --fs-job: 11px;
+      --fs-body: 10px;
+      --fs-small: 11px;
+
+      --gap-section: 13px;
+      --gap-item: 10px;
+      --page-h: 48px;
+      --page-v: 36px;
+    }
+
+    [data-theme="dark"] {
+      --color-bg: #0f172a;
+      --color-surface: #1e293b;
+      --color-text: #f1f5f9;
+      --color-muted: #94a3b8;
+      --color-date: #94a3b8;
+      --color-divider: #334155;
+      --color-tag-border: #475569;
+    }
+
+    /* ============================================================
+   RESET
+   ============================================================ */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font);
+      font-size: var(--fs-body);
+      background: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.55;
+      transition: background 0.25s, color 0.25s;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    /* ============================================================
+   UI CONTROLS
+   ============================================================ */
+    .ui-bar {
+      position: fixed;
+      top: 14px;
+      right: 14px;
+      display: flex;
+      gap: 8px;
+      z-index: 200;
+    }
+
+    .ui-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 6px 13px;
+      border-radius: 999px;
+      border: 1px solid var(--color-divider);
+      background: var(--color-surface);
+      color: var(--color-text);
+      font-family: var(--font);
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+      transition: box-shadow 0.15s;
+    }
+
+    .ui-btn:hover {
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .gear-btn {
+      padding: 8px;
+      border-radius: 50%;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      right: 0;
+      top: 100%;
+      margin-top: 8px;
+      flex-direction: column;
+      gap: 6px;
+      background: var(--color-surface);
+      border: 1px solid var(--color-divider);
+      border-radius: 12px;
+      padding: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      min-width: 140px;
+    }
+
+    .dropdown-content.show {
+      display: flex;
+    }
+
+    .dropdown-content .ui-btn {
+      width: 100%;
+      justify-content: flex-start;
+      border: none;
+      box-shadow: none;
+      background: transparent;
+    }
+
+    .dropdown-content .ui-btn:hover {
+      background: var(--color-bg);
+    }
+
+    #lang-select {
+      appearance: none;
+      -webkit-appearance: none;
+      padding-right: 20px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 6px center;
+    }
+
+    #lang-select option {
+      background: var(--color-surface);
+      color: var(--color-text);
+      border-radius: 0;
+      padding: 4px 8px;
+    }
+
+    /* ============================================================
+   PAGE SHELL
+   ============================================================ */
+    .page {
+      max-width: 780px;
+      margin: 32px auto;
+      padding: var(--page-v) var(--page-h);
+      background: var(--color-surface);
+      box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
+    }
+
+    /* ============================================================
+   HEADER
+   ============================================================ */
+    .hd-name {
+      font-size: var(--fs-name);
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      line-height: 1.1;
+    }
+
+    .hd-role {
+      font-size: var(--fs-role);
+      font-weight: 400;
+      color: var(--color-muted);
+      margin-top: 3px;
+    }
+
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      margin-top: 2px;
+      gap: 2px 0;
+    }
+
+    .contact-cell {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: var(--fs-contact);
+      color: var(--color-muted);
+      background: var(--color-bg);
+      border: 1px solid var(--color-divider);
+      padding: 3px 10px;
+      margin-right: 6px;
+      margin-bottom: 5px;
+      white-space: nowrap;
+    }
+
+    .contact-cell svg {
+      flex-shrink: 0;
+      opacity: 0.65;
+    }
+
+    /* ============================================================
+   SECTIONS
+   ============================================================ */
+    .section {
+      margin-top: var(--gap-section);
+    }
+
+    .section-title {
+      font-size: var(--fs-section);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      display: inline-block;
+      padding-bottom: 3px;
+      border-bottom: 2.5px solid var(--color-date);
+      margin-bottom: 9px;
+    }
+
+    .section-text {
+      font-size: var(--fs-body);
+      color: var(--color-muted);
+      line-height: 1.6;
+      text-align: justify;
+    }
+
+    /* ============================================================
+   SKILLS
+   ============================================================ */
+    .skills-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px 6px;
+    }
+
+    .skill-tag {
+      font-size: var(--fs-small);
+      padding: 2px 10px;
+      border: 1px solid var(--color-tag-border);
+      display: inline-block;
+      color: var(--color-text);
+      background: transparent;
+    }
+
+    /* ============================================================
+   EXPERIENCE
+   ============================================================ */
+    .exp-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--gap-item);
+      margin-top: var(--gap-item);
+    }
+
+    .exp-job {
+      font-size: var(--fs-job);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      display: block;
+    }
+
+    .exp-company {
+      font-size: var(--fs-small);
+      color: var(--color-muted);
+      font-style: italic;
+      margin-top: 1px;
+      margin-bottom: 5px;
+    }
+
+    .exp-date {
+      font-style: normal;
+      font-weight: 400;
+      color: var(--color-date);
+    }
+
+    .exp-bullets {
+      padding-left: 14px;
+      list-style: disc;
+      color: var(--color-muted);
+    }
+
+    .exp-bullets li {
+      font-size: var(--fs-body);
+      line-height: 1.5;
+      margin-bottom: 1px;
+    }
+
+    .exp-indicadores {
+      margin-top: 6px;
+      padding: 6px 10px;
+      border-left: 2px solid var(--color-divider);
+    }
+
+    .exp-indicadores-title {
+      font-size: var(--fs-small);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--color-text);
+      margin-bottom: 3px;
+    }
+
+    .exp-indicadores-text {
+      font-size: var(--fs-small);
+      color: var(--color-muted);
+      line-height: 1.55;
+      text-align: justify;
+    }
+
+    .exp-subcargo+.exp-subcargo {
+      margin-top: var(--gap-item);
+    }
+
+    /* ============================================================
+   EDUCATION
+   ============================================================ */
+    .edu-degree {
+      font-size: var(--fs-job);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .edu-institution {
+      font-size: var(--fs-small);
+      color: var(--color-muted);
+      margin-top: 1px;
+    }
+
+    .edu-item+.edu-item {
+      margin-top: 7px;
+    }
+
+    /* ============================================================
+   CERTIFICATIONS / AWARDS
+   ============================================================ */
+    .plain-list li {
+      font-size: var(--fs-body);
+      color: var(--color-muted);
+      padding-left: 12px;
+      position: relative;
+      margin-bottom: 2px;
+    }
+
+    .plain-list li::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      color: var(--color-text);
+    }
+
+    /* ============================================================
+   LANGUAGES
+   ============================================================ */
+    .lang-row {
+      display: flex;
+      gap: 0 60px;
+      flex-wrap: wrap;
+    }
+
+    .lang-pair {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .lang-name {
+      font-size: var(--fs-body);
+      font-weight: 700;
+      padding-left: 14px;
+      position: relative;
+    }
+
+    .lang-name::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      font-weight: 700;
+    }
+
+    .lang-level {
+      font-size: var(--fs-small);
+      color: var(--color-muted);
+      padding-left: 14px;
+    }
+
+    /* ============================================================
+   PREMIATIONS
+   ============================================================ */
+    .prem-desc {
+      display: block;
+      font-size: var(--fs-small);
+      color: var(--color-muted);
+      margin-top: 2px;
+      padding-left: 0;
+      text-align: justify;
+    }
+
+    /* ============================================================
+   RESPONSIVE
+   ============================================================ */
+    @media (max-width: 620px) {
+      :root {
+        --page-h: 20px;
+        --page-v: 24px;
+        --fs-name: 22px;
+      }
+
+      .page {
+        margin: 0;
+        box-shadow: none;
+      }
+
+      .ui-btn span {
+        display: none;
+      }
+    }
+
+    /* ============================================================
+   PRINT
+   ============================================================ */
+    @media print {
+      :root {
+        --fs-name: 26pt;
+        --fs-role: 9.5pt;
+        --fs-contact: 8.5pt;
+        --fs-section: 10pt;
+        --fs-job: 8.5pt;
+        --fs-body: 8pt;
+        --fs-small: 8.5pt;
+        --gap-section: 10pt;
+        --gap-item: 8pt;
+        --page-h: 0;
+        --page-v: 0;
+        --color-bg: #fff;
+        --color-surface: #fff;
+        --color-text: #000;
+        --color-muted: #444;
+        --color-date: #444;
+        --color-divider: #666;
+        --color-tag-border: #666;
+      }
+
+      [data-theme="dark"] {
+        --color-bg: #fff;
+        --color-surface: #fff;
+        --color-text: #000;
+        --color-muted: #444;
+        --color-date: #444;
+        --color-divider: #666;
+        --color-tag-border: #666;
+      }
+
+      @page {
+        size: A4;
+        margin: 12mm 13mm;
+      }
+
+      html,
+      body {
+        background: white !important;
+      }
+
+      .ui-bar {
+        display: none !important;
+      }
+
+      .page {
+        margin: 0 !important;
+        padding: 0 !important;
+        box-shadow: none !important;
+        max-width: 100% !important;
+      }
+
+      * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+
+      .edu-item,
+      .exp-item {
+        page-break-inside: avoid;
+        break-inside: avoid;
+      }
+
+      .section-skills {
+        page-break-after: avoid;
+        break-after: avoid;
+      }
+
+      section:has(.exp-list) h2 {
+        page-break-after: avoid;
+        break-after: avoid;
+      }
+
+      .exp-section-header {
+        page-break-inside: auto;
+        break-inside: auto;
+      }
+
+      .section-title {
+        orphans: 4;
+        widows: 4;
+      }
+
+      a::after {
+        content: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- UI CONTROLS -->
+  <div class="ui-bar">
+    <div class="dropdown">
+      <button class="ui-btn gear-btn" id="settings-btn" title="Configurações">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="3"></circle>
+          <path
+            d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
+          </path>
+        </svg>
+      </button>
+      <div class="dropdown-content" id="dropdown-menu">
+        <button class="ui-btn" id="theme-toggle" title="Alternar tema">
+          <svg id="theme-icon" xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5" />
+            <line x1="12" y1="1" x2="12" y2="3" />
+            <line x1="12" y1="21" x2="12" y2="23" />
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+            <line x1="1" y1="12" x2="3" y2="12" />
+            <line x1="21" y1="12" x2="23" y2="12" />
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+          </svg>
+          <span>Tema</span>
+        </button>
+        <select class="ui-btn" id="lang-select" title="Selecionar idioma">
+          <option value="pt">Português</option>
+          <option value="en">English</option>
+        </select>
+        <button class="ui-btn" id="versao-btn" title="Alternar versão">
+          <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
+            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
+          </svg>
+          <span>Completo</span>
+        </button>
+        <button class="ui-btn" id="print-btn" title="Baixar PDF">
+          <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+            <polyline points="7 10 12 15 17 10" />
+            <line x1="12" y1="15" x2="12" y2="3" />
+          </svg>
+          <span>Baixar PDF</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- CURRÍCULO -->
+  <main class="page" id="cv-root"></main>
+
+
+  <script>
+    const DATA_PT = {
+
+      /* ── Cabeçalho ─────────────────────────────── */
+      nome: 'Eber Lucas Cerqueira Elias',
+      cargo: 'DBA Pleno | Analista de BI Pleno',
+
+      contato: [
+        /* linha 1 */
+        { icone: 'phone', texto: '(61) 99562-6861' },
+        { icone: 'mail', texto: 'eberteclas@gmail.com', href: 'mailto:eberteclas@gmail.com' },
+        { icone: 'location', texto: 'Brasília, DF 72748001' },
+        /* linha 2 */
+        { icone: 'linkedin', texto: 'https://www.linkedin.com/in/eber-tlc/', href: 'https://www.linkedin.com/in/eber-tlc/' },
+        { icone: 'github', texto: 'https://github.com/ebertlc', href: 'https://github.com/ebertlc' },
+      ],
+
+      /* ── Resumo ─────────────────────────────────── */
+      resumoVisivel: false,
+      resumo: `DBA Pleno com atuação em órgãos do Governo Federal (MPDFT e MIDR), onde desenvolvi sólida experiência em administração de 
+  bancos de dados SQL Server, Oracle e PostgreSQL. Tenho expertise em alta disponibilidade com AlwaysOn e replicação, automação com 
+  scripts T-SQL, PL/SQL e Ansible, gerenciamento de backups com Commvault e desenvolvimento de pacotes ETL. Busco continuar me 
+  aprofundando na administração de dados em ambientes complexos e de alta demanda, contribuindo com segurança, performance e 
+  confiabilidade.`,
+
+      /* ── Skills ─────────────────────────────────── */
+      skills: ['SQL', 'Python', 'SQLServer', 'MySQL', 'MongoDB', 'Power BI', 'PL/SQL', 'AWS', 'Linux', 'PostgreSQL', 'Oracle', 'Windows Server'],
+
+      /* ── Experiências ───────────────────────────── */
+      experiencias: [
+        {
+          empresa: 'MPDFT – Ministério Público do Distrito Federal e Territórios',
+          cargo: 'Residente em Tecnologia da Informação – DBA, Brasília, DF',
+          periodo: 'Agosto 2024 – Atual',
+          itens: [
+            'Execução de scripts e migração de bancos (backup/restore) para novos servidores;',
+            'Gerenciamento de backups/restores manuais (SGBD/Commvault) e snapshots para testes;',
+            'Criação de logins/usuários, gerenciamento de permissões e auditoria de operações;',
+            'Configuração e manutenção de clusters, replicação e AlwaysOn (failover, réplicas);',
+            'Instalação, atualização e criação/desativação de objetos (bancos, jobs, linked servers);',
+            'Criação e execução de scripts (banco, SO, Ansible) para automação de tarefas;',
+            'Desenvolvimento, publicação e manutenção de pacotes ETL;',
+            'Resolução de incidentes e suporte a outras equipes em questões de banco de dados;',
+            'Exportação/importação de dados e configuração de conexões ODBC;',
+            'Criação e atualização de procedimentos e documentação técnica (Wiki, manuais);',
+          ],
+          indicadores: `Lorem ipsum dolor sit amet consectetur adipiscing elit.`,
+        },
+        {
+          empresa: 'MIDR – Ministério do Desenvolvimento Regional',
+          /* dois cargos na mesma empresa — array de subcargos */
+          cargos: [
+            {
+              cargo: 'Auxiliar De Tratamento de Dados, Brasília, DF',
+              periodo: 'Novembro 2023 – Agosto 2024',
+              itens: [
+                'Auxílio e gerenciamento nos processos relacionados ao desenvolvimento de sistemas relativos à SEDEC(Secretaria Nacional de Proteção e Defesa Civil);',
+                'Apoio, extração e análise de dados de interesse da secretaria;',
+                'Apoio na elaboração de relatórios e apresentações de dados;',
+                'Manutenção e execução de rotinas de backup e recuperação de dados;',
+                'Criação e execução de scripts de automação de tarefas e atualizações em banco de dados ORACLE e Postgres;',
+                'Criação e manutenção de documentação técnica dos sistemas e processos da SEDEC.',
+              ],
+            },
+            {
+              cargo: 'Estagiário TI, Brasília, DF',
+              periodo: 'Abril 2023 – Novembro 2023',
+              itens: [
+                'Auxílio nos processos relacionados ao desenvolvimento de sistemas relativos à SEDEC;',
+                'Apoio, extração e análise de dados de interesse da secretaria, com acompanhamento direto do responsável técnico.',
+              ],
+            },
+          ],
+          indicadores: `Lorem ipsum dolor sit amet consectetur adipiscing elit.`,
+        },
+        {
+          empresa: 'UCB – Universidade Católica de Brasília',
+          cargo: 'Tutor Acadêmico EAD, Taguatinga, DF',
+          periodo: 'Outubro 2021 – Janeiro 2022',
+          itens: [
+            'Acompanhamento e motivação da performance e frequência dos alunos no Ambiente Virtual de Aprendizagem;',
+            'Apoio aos discentes no acesso às suas atividades;',
+            'Realização de atendimento e esclarecimento de dúvidas técnicas via e-mail, presencial ou por telefone;',
+            'Manutenção e alimentação das planilhas, relatórios, dashboards e outros documentos solicitados pela gestão.',
+          ],
+        },
+      ],
+
+      /* ── Formação ───────────────────────────────── */
+      formacao: [
+        {
+          curso: 'Análise e Desenvolvimento de Sistemas, Taguatinga',
+          instituicao: 'Centro Universitário Estácio de Brasília, Concluído em: Julho 2024',
+        },
+      ],
+
+      /* ── Certificações ──────────────────────────── */
+      certificacoes: [
+        'Inteligência Artificial aplicada à Visão Computacional',
+        'MongoDB Overview: Core Concepts and Architecture',
+        'MongoDB Schema Design Patterns and Anti-patterns Skill Badge',
+        'From Relational Model (SQL) to MongoDB\'s Document Model',
+        'MongoDB Overview: Core Concepts and Architecture',
+        'Programação para Internet',
+        'Desenvolvimento Rápido de Aplicações em Python para Cloud, Iot e Bigdata',
+        'Análise de Dados como Suporte à Tomada de Decisão'
+      ],
+
+      /* ── Idiomas ────────────────────────────────── */
+      idiomas: [
+        { idioma: 'Inglês', nivel: 'Conversação' },
+        { idioma: 'Espanhol', nivel: 'Intermediário' },
+      ],
+
+      /* ── Premiações ─────────────────────────────── */
+      premiacoes: [
+        {
+          titulo: '1° Lugar – Hackathon Campus Party Brasília 2022',
+          descricao: 'Lorem ipsum dolor sit amet consectetur adipiscing elit.'
+        },
+      ],
+    };
+
+
+    const DATA_EN = {
+
+      /* ── Header ─────────────────────────────────── */
+      nome: 'Eber Lucas Cerqueira Elias',
+      cargo: 'Mid-level DBA | Mid-level BI Analyst',
+
+      contato: [
+        /* row 1 */
+        { icone: 'phone', texto: '+55 (61) 99562-6861' },
+        { icone: 'mail', texto: 'eberteclas@gmail.com', href: 'mailto:eberteclas@gmail.com' },
+        { icone: 'location', texto: 'Brasília, DF 72748001' },
+        /* row 2 */
+        { icone: 'linkedin', texto: 'https://www.linkedin.com/in/eber-tlc/', href: 'https://www.linkedin.com/in/eber-tlc/' },
+        { icone: 'github', texto: 'https://github.com/ebertlc', href: 'https://github.com/ebertlc' },
+      ],
+
+      /* ── Summary ────────────────────────────────── */
+      resumoVisivel: false,
+      resumo: `Mid-level DBA with experience in Federal Government agencies (MPDFT and MIDR), where I developed solid expertise in SQL Server, Oracle, and PostgreSQL database administration. I have strong skills in high availability with AlwaysOn and replication, automation using T-SQL scripts, PL/SQL, and Ansible, backup management with Commvault, and ETL package development. I seek to further deepen my knowledge in data administration within complex, high-demand environments, ensuring security, performance, and reliability.`,
+
+      /* ── Skills ─────────────────────────────────── */
+      skills: ['SQL', 'Python', 'SQLServer', 'MySQL', 'MongoDB', 'Power BI', 'PL/SQL', 'AWS', 'Linux', 'PostgreSQL', 'Oracle', 'Windows Server'],
+
+      /* ── Experience ─────────────────────────────── */
+      experiencias: [
+        {
+          empresa: 'MPDFT – Public Prosecution Office of the Federal District and Territories',
+          cargo: 'Information Technology Resident – DBA, Brasília, DF',
+          periodo: 'August 2024 – Present',
+          itens: [
+            'Execution of scripts and database migration (backup/restore) to new servers;',
+            'Management of manual backups/restores (DBMS/Commvault) and snapshots for testing environments;',
+            'Creation of logins/users, permission management, and operations auditing;',
+            'Configuration and maintenance of clusters, replication, and AlwaysOn (failover, replicas);',
+            'Installation, updating, and creation/deactivation of objects (databases, jobs, linked servers);',
+            'Creation and execution of scripts (database, OS, Ansible) for task automation;',
+            'Development, deployment, and maintenance of ETL packages;',
+            'Incident resolution and support for other teams on database-related issues;',
+            'Data export/import and ODBC connection configuration;',
+            'Creation and updating of procedures and technical documentation (Wiki, manuals);',
+          ],
+          indicadores: `Lorem ipsum dolor sit amet consectetur adipiscing elit.`,
+        },
+        {
+          empresa: 'MIDR – Ministry of Regional Development',
+          /* multiple roles in the same company — array of sub-roles */
+          cargos: [
+            {
+              cargo: 'Data Processing Assistant, Brasília, DF',
+              periodo: 'November 2023 – August 2024',
+              itens: [
+                'Assisted and managed processes related to system development concerning SEDEC;',
+                'Supported, extracted, and analyzed data of interest to the secretariat;',
+                'Supported the preparation of data reports and presentations;',
+                'Maintained and executed data backup and recovery routines;',
+                'Created and executed automation scripts and updates for ORACLE and Postgres databases;',
+                'Created and maintained technical documentation for SEDEC systems and processes.',
+              ],
+            },
+            {
+              cargo: 'IT Intern, Brasília, DF',
+              periodo: 'April 2023 – November 2023',
+              itens: [
+                'Assisted in processes related to system development concerning SEDEC;',
+                'Supported, extracted, and analyzed data of interest to the secretariat, closely guided by the technical lead.',
+              ],
+            },
+          ],
+          indicadores: `Lorem ipsum dolor sit amet consectetur adipiscing elit.`,
+        },
+        {
+          empresa: 'UCB – Catholic University of Brasília',
+          cargo: 'Academic Tutor (E-Learning), Taguatinga, DF',
+          periodo: 'October 2021 – January 2022',
+          itens: [
+            'Monitored and motivated student performance and attendance in the Virtual Learning Environment;',
+            'Assisted students with access to their activities;',
+            'Provided support and clarified technical doubts via email, in-person, or by phone;',
+            'Maintained and updated spreadsheets, reports, dashboards, and other documents requested by management.',
+          ],
+        },
+      ],
+
+      /* ── Education ──────────────────────────────── */
+      formacao: [
+        {
+          curso: 'Systems Analysis and Development, Taguatinga',
+          instituicao: 'Estácio de Brasília University Center, Completed: July 2024',
+        },
+      ],
+
+      /* ── Certifications ─────────────────────────── */
+      certificacoes: [
+        'Artificial Intelligence applied to Computer Vision',
+        'MongoDB Overview: Core Concepts and Architecture',
+        'MongoDB Schema Design Patterns and Anti-patterns Skill Badge',
+        'From Relational Model (SQL) to MongoDB\'s Document Model',
+        'MongoDB Overview: Core Concepts and Architecture',
+        'Internet Programming',
+        'Rapid Python Application Development for Cloud, IoT, and Big Data',
+        'Data Analysis as Support for Decision Making'
+      ],
+
+      /* ── Languages ──────────────────────────────── */
+      idiomas: [
+        { idioma: 'English', nivel: 'Conversational' },
+        { idioma: 'Spanish', nivel: 'Intermediate' },
+      ],
+
+      /* ── Awards ─────────────────────────────────── */
+      premiacoes: [
+        {
+          titulo: '1st Place – Campus Party Brasília 2022 Hackathon',
+          descricao: 'Lorem ipsum dolor sit amet consectetur adipiscing elit.'
+        },
+      ],
+    };
+
+
+    /* ── Ícones SVG inline ──────────────────────────────────────── */
+    const ICONS = {
+      phone: `<svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L9.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>`,
+      mail: `<svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>`,
+      location: `<svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>`,
+      linkedin: `<svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>`,
+      github: `<svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>`,
+    };
+
+    /* ── Helpers ────────────────────────────────────────────────── */
+    function el(tag, attrs = {}, ...children) {
+      const e = document.createElement(tag);
+      for (const [k, v] of Object.entries(attrs)) {
+        if (k === 'class') e.className = v;
+        else e.setAttribute(k, v);
+      }
+      for (const c of children) {
+        if (typeof c === 'string') e.insertAdjacentHTML('beforeend', c);
+        else if (c) e.appendChild(c);
+      }
+      return e;
+    }
+
+    function section(titulo, className = '') {
+      const sec = el('section', { class: 'section' + (className ? ' ' + className : '') });
+      if (titulo) {
+        sec.appendChild(el('h2', { class: 'section-title' }, titulo));
+      }
+      return sec;
+    }
+
+    function plainList(itens) {
+      const ul = el('ul', { class: 'plain-list' });
+      itens.forEach(t => ul.appendChild(el('li', {}, t)));
+      return ul;
+    }
+
+    function criarExpItem(exp) {
+      const art = el('article', { class: 'exp-item' });
+
+      /* Empresa como título do grupo */
+      art.appendChild(el('span', { class: 'exp-job' }, exp.empresa));
+
+      /* Caso simples: cargo único */
+      if (exp.cargo) {
+        const company = el('p', { class: 'exp-company' });
+        company.insertAdjacentHTML('beforeend',
+          `${exp.cargo} <span class="exp-date">| ${exp.periodo}</span>`
+        );
+        art.appendChild(company);
+
+        const ul = el('ul', { class: 'exp-bullets' });
+        exp.itens.forEach(item => ul.appendChild(el('li', {}, item)));
+        art.appendChild(ul);
+      }
+
+      /* Caso múltiplos cargos na mesma empresa */
+      if (exp.cargos) {
+        exp.cargos.forEach(c => {
+          const subcargo = el('div', { class: 'exp-subcargo' });
+
+          const company = el('p', { class: 'exp-company' });
+          company.insertAdjacentHTML('beforeend',
+            `${c.cargo} <span class="exp-date">| ${c.periodo}</span>`
+          );
+          subcargo.appendChild(company);
+
+          const ul = el('ul', { class: 'exp-bullets' });
+          c.itens.forEach(item => ul.appendChild(el('li', {}, item)));
+          subcargo.appendChild(ul);
+
+          art.appendChild(subcargo);
+        });
+      }
+
+      /* Indicadores — só na versão completa */
+      if (typeof versaoCompleta !== 'undefined' && versaoCompleta && exp.indicadores) {
+        const ind = el('div', { class: 'exp-indicadores' });
+        ind.appendChild(el('p', { class: 'exp-indicadores-text' }, exp.indicadores.trim()));
+        art.appendChild(ind);
+      }
+
+      return art;
+    }
+
+    /* ── Renderizador principal ─────────────────────────────────── */
+    function renderCV(cv, root) {
+
+      /* CABEÇALHO */
+      const header = el('header');
+      header.appendChild(el('h1', { class: 'hd-name' }, cv.nome));
+      header.appendChild(el('p', { class: 'hd-role' }, cv.cargo));
+
+      const addr = el('address', { style: 'font-style:normal;' });
+      const row1 = el('div', { class: 'contact-row' });
+      const row2 = el('div', { class: 'contact-row' });
+      cv.contato.forEach((c, i) => {
+        const cell = el('span', { class: 'contact-cell' });
+        cell.insertAdjacentHTML('beforeend', ICONS[c.icone] || '');
+        if (c.href) {
+          cell.appendChild(el('a', { href: c.href, target: '_blank', rel: 'noopener' }, c.texto));
+        } else {
+          cell.insertAdjacentHTML('beforeend', c.texto);
+        }
+        (i < 3 ? row1 : row2).appendChild(cell);
+      });
+      addr.appendChild(row1);
+      addr.appendChild(row2);
+      header.appendChild(addr);
+      root.appendChild(header);
+
+      /* RESUMO */
+      if (cv.resumo) {
+        const secResumo = section(cv.resumoVisivel !== false ? 'Resumo Profissional' : '');
+        secResumo.appendChild(el('p', { class: 'section-text' }, cv.resumo.trim()));
+        root.appendChild(secResumo);
+      }
+
+      /* SKILLS */
+      const secSkills = section('Skills', 'section-skills');
+      const skillRow = el('div', { class: 'skills-row' });
+      cv.skills.forEach(s => skillRow.appendChild(el('span', { class: 'skill-tag' }, s)));
+      secSkills.appendChild(skillRow);
+      root.appendChild(secSkills);
+
+      /* EXPERIÊNCIAS */
+      if (cv.experiencias && cv.experiencias.length > 0) {
+        const secExp = el('section', { class: 'section' });
+        const expHeader = el('div', { class: 'exp-section-header' });
+        expHeader.appendChild(el('h2', { class: 'section-title' }, 'Experiências'));
+        expHeader.appendChild(criarExpItem(cv.experiencias[0]));
+        secExp.appendChild(expHeader);
+
+        if (cv.experiencias.length > 1) {
+          const expList = el('div', { class: 'exp-list' });
+          cv.experiencias.slice(1).forEach(exp => {
+            expList.appendChild(criarExpItem(exp));
+          });
+          secExp.appendChild(expList);
+        }
+        root.appendChild(secExp);
+      }
+
+      /* FORMAÇÃO */
+      const secForm = section('Formação');
+      cv.formacao.forEach(f => {
+        const div = el('div', { class: 'edu-item' });
+        div.appendChild(el('p', { class: 'edu-degree' }, f.curso));
+        div.appendChild(el('p', { class: 'edu-institution' }, f.instituicao));
+        secForm.appendChild(div);
+      });
+      root.appendChild(secForm);
+
+      /* CERTIFICAÇÕES */
+      const secCert = section('Certificações');
+      secCert.appendChild(plainList(cv.certificacoes));
+      root.appendChild(secCert);
+
+      /* IDIOMAS */
+      const secLang = section('Idiomas');
+      const langRow = el('div', { class: 'lang-row' });
+      cv.idiomas.forEach(l => {
+        const div = el('div', { class: 'lang-pair' });
+        div.insertAdjacentHTML('beforeend',
+          `<span class="lang-name">${l.idioma}</span><span class="lang-level">${l.nivel}</span>`
+        );
+        langRow.appendChild(div);
+      });
+      secLang.appendChild(langRow);
+      root.appendChild(secLang);
+
+      /* PREMIAÇÕES */
+      const secPrem = section('Premiações');
+      const premList = el('ul', { class: 'plain-list' });
+      cv.premiacoes.forEach(p => {
+        const li = el('li', {});
+        li.insertAdjacentHTML('beforeend', `<strong>${p.titulo}</strong>`);
+        if (typeof versaoCompleta !== 'undefined' && versaoCompleta && p.descricao) {
+          li.insertAdjacentHTML('beforeend',
+            `<span class="prem-desc">${p.descricao}</span>`
+          );
+        }
+        premList.appendChild(li);
+      });
+      secPrem.appendChild(premList);
+      root.appendChild(secPrem);
+    }
+
+    renderCV(CV, document.getElementById('cv-root'));
+
+
+    const langSelect = document.getElementById('lang-select');
+    const savedLang = localStorage.getItem('cv-lang') || 'pt';
+    langSelect.value = savedLang;
+
+    function loadLang(lang) {
+      window.CV = lang === 'en' ? DATA_EN : DATA_PT;
+      document.getElementById('cv-root').innerHTML = '';
+      renderCV(window.CV, document.getElementById('cv-root'));
+      localStorage.setItem('cv-lang', lang);
+    }
+
+    // Initialize
+    loadLang(savedLang);
+
+    langSelect.addEventListener('change', (e) => loadLang(e.target.value));
+
+    // Funcionalidade do Menu Suspenso (Engrenagem)
+    const settingsBtn = document.getElementById('settings-btn');
+    const dropdownMenu = document.getElementById('dropdown-menu');
+
+    settingsBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      dropdownMenu.classList.toggle('show');
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!dropdownMenu.contains(e.target) && e.target !== settingsBtn) {
+        dropdownMenu.classList.remove('show');
+      }
+    });
+  </script>
+</body>
+
+
+</html>

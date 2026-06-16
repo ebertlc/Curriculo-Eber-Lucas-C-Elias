@@ -7,7 +7,6 @@
   --color-text: #111111;
   --color-muted: #555555;
   --color-date: #555555;
-  /* datas — cinza como no PDF original */
   --color-divider: #cccccc;
   --color-tag-border: #aaaaaa;
 
@@ -189,35 +188,12 @@ ul {
   margin-top: 3px;
 }
 
-/*.contact-row {
-  display: flex;
-  flex-wrap: wrap;
-  margin-top: 12px;
-  gap: 5px 0;
-}*/
-
 .contact-row {
   display: flex;
   flex-wrap: wrap;
   margin-top: 2px;
   gap: 2px 0;
 }
-
-/*.contact-cell {
-  border: none;
-  outline: 1px solid #aaaaaa;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  font-size: var(--fs-contact);
-  color: var(--color-muted);
-  background: var(--color-bg);
-  border: 1px solid var(--color-divider);
-  padding: 3px 10px;
-  margin-right: 6px;
-  margin-bottom: 5px;
-  white-space: nowrap;
-}*/
 
 .contact-cell {
   display: flex;
@@ -251,10 +227,8 @@ ul {
   text-transform: uppercase;
   letter-spacing: 0.09em;
   display: inline-block;
-  /* faz o border ter a largura do texto */
   padding-bottom: 3px;
   border-bottom: 2.5px solid var(--color-date);
-  /* mais grossa, cor sólida */
   margin-bottom: 9px;
 }
 
@@ -273,15 +247,6 @@ ul {
   flex-wrap: wrap;
   gap: 5px 6px;
 }
-
-/*.skill-tag {
-  font-size: var(--fs-small);
-  padding: 2px 10px;
-  border: 1px solid var(--color-tag-border);
-  display: inline-block;
-  color: var(--color-text);
-  background: transparent;
-}*/
 
 .skill-tag {
   font-size: var(--fs-small);
@@ -310,8 +275,6 @@ ul {
   display: block;
 }
 
-
-/* Empresa e data ficam na mesma linha, separados por " | " */
 .exp-company {
   font-size: var(--fs-small);
   color: var(--color-muted);
@@ -440,7 +403,6 @@ ul {
 /* ============================================================
    PREMIATIONS
    ============================================================ */
-
 .prem-desc {
   display: block;
   font-size: var(--fs-small);
@@ -529,7 +491,6 @@ ul {
   * {
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
-    color-adjust: exact !important;
   }
 
   .edu-item,

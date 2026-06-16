@@ -23,7 +23,9 @@ function el(tag, attrs = {}, ...children) {
 
 function section(titulo, className = '') {
   const sec = el('section', { class: 'section' + (className ? ' ' + className : '') });
-  sec.appendChild(el('h2', { class: 'section-title' }, titulo));
+  if (titulo) {
+    sec.appendChild(el('h2', { class: 'section-title' }, titulo));
+  }
   return sec;
 }
 
@@ -35,6 +37,55 @@ function plainList(itens) {
 
 function criarExpItem(exp) {
   const art = el('article', { class: 'exp-item' });
+
+  /* Empresa como título do grupo */
+  art.appendChild(el('span', { class: 'exp-job' }, exp.empresa));
+
+  /* Caso simples: cargo único */
+  if (exp.cargo) {
+    const company = el('p', { class: 'exp-company' });
+    company.insertAdjacentHTML('beforeend',
+      `${exp.cargo} <span class="exp-date">| ${exp.periodo}</span>`
+    );
+    art.appendChild(company);
+
+    const ul = el('ul', { class: 'exp-bullets' });
+    exp.itens.forEach(item => ul.appendChild(el('li', {}, item)));
+    art.appendChild(ul);
+  }
+
+  /* Caso múltiplos cargos na mesma empresa */
+  if (exp.cargos) {
+    exp.cargos.forEach(c => {
+      const subcargo = el('div', { class: 'exp-subcargo' });
+
+      const company = el('p', { class: 'exp-company' });
+      company.insertAdjacentHTML('beforeend',
+        `${c.cargo} <span class="exp-date">| ${c.periodo}</span>`
+      );
+      subcargo.appendChild(company);
+
+      const ul = el('ul', { class: 'exp-bullets' });
+      c.itens.forEach(item => ul.appendChild(el('li', {}, item)));
+      subcargo.appendChild(ul);
+
+      art.appendChild(subcargo);
+    });
+  }
+
+  /* Indicadores — só na versão completa */
+  if (versaoCompleta && exp.indicadores) {
+    const ind = el('div', { class: 'exp-indicadores' });
+    // ind.appendChild(el('p', { class: 'exp-indicadores-title' }, 'Indicadores de Rendimento'));
+    ind.appendChild(el('p', { class: 'exp-indicadores-text' }, exp.indicadores.trim()));
+    art.appendChild(ind);
+  }
+
+  return art;
+}
+
+/*function criarExpItem(exp) {
+  const art = el('article', { class: 'exp-item' });
   art.appendChild(el('span', { class: 'exp-job' }, exp.cargo));
   const company = el('p', { class: 'exp-company' });
   company.insertAdjacentHTML('beforeend',
@@ -45,7 +96,7 @@ function criarExpItem(exp) {
   exp.itens.forEach(item => ul.appendChild(el('li', {}, item)));
   art.appendChild(ul);
   return art;
-}
+}*/
 
 /* ── Renderizador principal ─────────────────────────────────── */
 function renderCV(cv, root) {
@@ -74,9 +125,11 @@ function renderCV(cv, root) {
   root.appendChild(header);
 
   /* RESUMO */
-  const secResumo = section(cv.resumoVisivel ? 'Resumo Profissional' : '');
-  secResumo.appendChild(el('p', { class: 'section-text' }, cv.resumo.trim()));
-  root.appendChild(secResumo);
+  if (cv.resumo) {
+    const secResumo = section(cv.resumoVisivel !== false ? 'Resumo Profissional' : '');
+    secResumo.appendChild(el('p', { class: 'section-text' }, cv.resumo.trim()));
+    root.appendChild(secResumo);
+  }
 
   /* SKILLS */
   const secSkills = section('Skills', 'section-skills');
@@ -86,19 +139,22 @@ function renderCV(cv, root) {
   root.appendChild(secSkills);
 
   /* EXPERIÊNCIAS */
-  const secExp = el('section', { class: 'section' });
-  const expHeader = el('div', { class: 'exp-section-header' });
-  expHeader.appendChild(el('h2', { class: 'section-title' }, 'Experiências'));
-  expHeader.appendChild(criarExpItem(cv.experiencias[0]));
-  secExp.appendChild(expHeader);
+  if (cv.experiencias && cv.experiencias.length > 0) {
+    const secExp = el('section', { class: 'section' });
+    const expHeader = el('div', { class: 'exp-section-header' });
+    expHeader.appendChild(el('h2', { class: 'section-title' }, 'Experiências'));
+    expHeader.appendChild(criarExpItem(cv.experiencias[0]));
+    secExp.appendChild(expHeader);
 
-  const expList = el('div', { class: 'exp-list' });
-  cv.experiencias.slice(1).forEach(exp => {
-    expList.appendChild(criarExpItem(exp));
-  });
-
-  secExp.appendChild(expList);
-  root.appendChild(secExp);
+    if (cv.experiencias.length > 1) {
+      const expList = el('div', { class: 'exp-list' });
+      cv.experiencias.slice(1).forEach(exp => {
+        expList.appendChild(criarExpItem(exp));
+      });
+      secExp.appendChild(expList);
+    }
+    root.appendChild(secExp);
+  }
 
   /* FORMAÇÃO */
   const secForm = section('Formação');
@@ -130,9 +186,22 @@ function renderCV(cv, root) {
 
   /* PREMIAÇÕES */
   const secPrem = section('Premiações');
-  secPrem.appendChild(plainList(cv.premiacoes));
+  const premList = el('ul', { class: 'plain-list' });
+  cv.premiacoes.forEach(p => {
+    const li = el('li', {});
+    li.insertAdjacentHTML('beforeend', `<strong>${p.titulo}</strong>`);
+    if (versaoCompleta && p.descricao) {
+      li.insertAdjacentHTML('beforeend',
+        `<span class="prem-desc">${p.descricao}</span>`
+      );
+    }
+    premList.appendChild(li);
+  });
+  secPrem.appendChild(premList);
   root.appendChild(secPrem);
 }
+
+let versaoCompleta = false;
 
 renderCV(CV, document.getElementById('cv-root'));
 
@@ -159,4 +228,12 @@ document.getElementById('print-btn').addEventListener('click', () => {
   html.setAttribute('data-theme', 'light');
   window.print();
   html.setAttribute('data-theme', prev);
+});
+
+document.getElementById('versao-btn').addEventListener('click', () => {
+  versaoCompleta = !versaoCompleta;
+  document.getElementById('versao-btn').querySelector('span').textContent =
+    versaoCompleta ? 'Simplificado' : 'Completo';
+  document.getElementById('cv-root').innerHTML = '';
+  renderCV(CV, document.getElementById('cv-root'));
 });

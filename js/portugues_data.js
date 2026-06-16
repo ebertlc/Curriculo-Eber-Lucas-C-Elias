@@ -1,4 +1,4 @@
-const CV = {
+var CV = {
 
   /* ── Cabeçalho ─────────────────────────────── */
   nome: 'Eber Lucas Cerqueira Elias',
@@ -23,13 +23,13 @@ const CV = {
   confiabilidade.`,
 
   /* ── Skills ─────────────────────────────────── */
-  skills: ['SQL', 'Python', 'SQLServer', 'MySQL', 'MongoDB', 'Power BI', 'PL/SQL', 'AWS', 'Linux', 'PostgreSQL', ' Oracle', 'Windows Server'],
+  skills: ['SQL', 'Python', 'SQLServer', 'MySQL', 'MongoDB', 'Power BI', 'PL/SQL', 'AWS', 'Linux', 'PostgreSQL', 'Oracle', 'Windows Server'],
 
   /* ── Experiências ───────────────────────────── */
   experiencias: [
     {
-      cargo: 'Residente em Tecnologia da Informação – DBA, Brasília, DF',
       empresa: 'MPDFT – Ministério Público do Distrito Federal e Territórios',
+      cargo: 'Residente em Tecnologia da Informação – DBA, Brasília, DF',
       periodo: 'Agosto 2024 – Atual',
       itens: [
         'Execução de scripts e migração de bancos (backup/restore) para novos servidores;',
@@ -42,41 +42,47 @@ const CV = {
         'Resolução de incidentes e suporte a outras equipes em questões de banco de dados;',
         'Exportação/importação de dados e configuração de conexões ODBC;',
         'Criação e atualização de procedimentos e documentação técnica (Wiki, manuais);',
-      ]
+      ],
+      indicadores: `Lorem ipsum dolor sit amet consectetur adipiscing elit.`,
     },
     {
-      cargo: 'Auxiliar De Tratamento de Dados, Brasília, DF',
       empresa: 'MIDR – Ministério do Desenvolvimento Regional',
-      periodo: 'Novembro 2023 – Agosto 2024',
-      itens: [
-        'Auxílio e gerenciamento nos processos relacionados ao desenvolvimento de sistemas relativos à SEDEC (Secretaria Nacional de Proteção e Defesa Civil);',
-        'Apoio, extração e análise de dados de interesse da secretaria;',
-        'Apoio na elaboração de relatórios e apresentações de dados;',
-        'Manutenção e execução de rotinas de backup e recuperação de dados;',
-        'Criação e execução de scripts de automação de tarefas e atualizações em banco de dados ORACLE e Postgres;',
-        'Criação e manutenção de documentação técnica dos sistemas e processos da SEDEC.'
-      ]
+      /* dois cargos na mesma empresa — array de subcargos */
+      cargos: [
+        {
+          cargo: 'Auxiliar De Tratamento de Dados, Brasília, DF',
+          periodo: 'Novembro 2023 – Agosto 2024',
+          itens: [
+            'Auxílio e gerenciamento nos processos relacionados ao desenvolvimento de sistemas relativos à SEDEC(Secretaria Nacional de Proteção e Defesa Civil);',
+            'Apoio, extração e análise de dados de interesse da secretaria;',
+            'Apoio na elaboração de relatórios e apresentações de dados;',
+            'Manutenção e execução de rotinas de backup e recuperação de dados;',
+            'Criação e execução de scripts de automação de tarefas e atualizações em banco de dados ORACLE e Postgres;',
+            'Criação e manutenção de documentação técnica dos sistemas e processos da SEDEC.',
+          ],
+        },
+        {
+          cargo: 'Estagiário TI, Brasília, DF',
+          periodo: 'Abril 2023 – Novembro 2023',
+          itens: [
+            'Auxílio nos processos relacionados ao desenvolvimento de sistemas relativos à SEDEC;',
+            'Apoio, extração e análise de dados de interesse da secretaria, com acompanhamento direto do responsável técnico.',
+          ],
+        },
+      ],
+      indicadores: `Lorem ipsum dolor sit amet consectetur adipiscing elit.`,
     },
     {
-      cargo: 'Estagiário TI, Brasília, DF',
-      empresa: 'MIDR – Ministério do Desenvolvimento Regional',
-      periodo: 'Abril 2023 – Novembro 2023',
-      itens: [
-        'Auxílio nos processos relacionados ao desenvolvimento de sistemas relativos à SEDEC;',
-        'Apoio, extração e análise de dados de interesse da secretaria, com acompanhamento direto do responsável técnico.'
-      ]
-    },
-    {
-      cargo: 'Tutor Acadêmico EAD, Taguatinga, DF',
       empresa: 'UCB – Universidade Católica de Brasília',
+      cargo: 'Tutor Acadêmico EAD, Taguatinga, DF',
       periodo: 'Outubro 2021 – Janeiro 2022',
       itens: [
         'Acompanhamento e motivação da performance e frequência dos alunos no Ambiente Virtual de Aprendizagem;',
         'Apoio aos discentes no acesso às suas atividades;',
         'Realização de atendimento e esclarecimento de dúvidas técnicas via e-mail, presencial ou por telefone;',
-        'Manutenção e alimentação das planilhas, relatórios, dashboards e outros documentos solicitados pela gestão.'
-      ]
-    }
+        'Manutenção e alimentação das planilhas, relatórios, dashboards e outros documentos solicitados pela gestão.',
+      ],
+    },
   ],
 
   /* ── Formação ───────────────────────────────── */
@@ -94,9 +100,9 @@ const CV = {
     'MongoDB Schema Design Patterns and Anti-patterns Skill Badge',
     'From Relational Model (SQL) to MongoDB\'s Document Model',
     'MongoDB Overview: Core Concepts and Architecture',
-    'PROGRAMAÇÃO PARA INTERNET',
-    'DESENVOLVIMENTO RÁPIDO DE APLICAÇÕES EM PYTHON PARA CLOUD, IOT E BIGDATA',
-    'Análise de dados como suporte à tomada de decisão'
+    'Programação para Internet',
+    'Desenvolvimento Rápido de Aplicações em Python para Cloud, Iot e Bigdata',
+    'Análise de Dados como Suporte à Tomada de Decisão'
   ],
 
   /* ── Idiomas ────────────────────────────────── */
@@ -107,6 +113,9 @@ const CV = {
 
   /* ── Premiações ─────────────────────────────── */
   premiacoes: [
-    '1° Lugar – Hackathon Campus Party Brasília 2022',
+    {
+      titulo: '1° Lugar – Hackathon Campus Party Brasília 2022',
+      descricao: 'Lorem ipsum dolor sit amet consectetur adipiscing elit.'
+    },
   ],
 };

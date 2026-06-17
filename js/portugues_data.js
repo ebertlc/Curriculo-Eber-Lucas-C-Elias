@@ -8,7 +8,7 @@ var CV = {
     /* linha 1 */
     { icone: 'phone', texto: '(61) 99562-6861' },
     { icone: 'mail', texto: 'eberteclas@gmail.com', href: 'mailto:eberteclas@gmail.com' },
-    { icone: 'location', texto: 'Brasília, DF 72748001' },
+    { icone: 'location', texto: 'Brasília, DF 72748-001' },
     /* linha 2 */
     { icone: 'linkedin', texto: 'https://www.linkedin.com/in/eber-tlc/', href: 'https://www.linkedin.com/in/eber-tlc/' },
     { icone: 'github', texto: 'https://github.com/ebertlc', href: 'https://github.com/ebertlc' },
@@ -43,7 +43,9 @@ var CV = {
         'Exportação/importação de dados e configuração de conexões ODBC;',
         'Criação e atualização de procedimentos e documentação técnica (Wiki, manuais);',
       ],
-      indicadores: `Lorem ipsum dolor sit amet consectetur adipiscing elit.`,
+      indicadores: `Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor 
+      incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet consectetur adipiscing 
+      elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`,
     },
     {
       empresa: 'MIDR – Ministério do Desenvolvimento Regional',
@@ -70,7 +72,14 @@ var CV = {
           ],
         },
       ],
-      indicadores: `Lorem ipsum dolor sit amet consectetur adipiscing elit.`,
+      indicadores: `Atuei no suporte ao usuário do S2iD (Sistema Integrado de Informações sobre Desastres), 
+      desenvolvendo scripts SQL para correções diretas no banco de dados em produção. Fui um dos 
+      representantes de negócio junto à fábrica de software na criação da nova versão da plataforma, 
+      definindo requisitos e homologando entregas. Criei um programa Python para geração de arquivos 
+      bancários, com atuação crítica durante as enchentes do RS (2024), viabilizando a abertura de mais 
+      de 200 contas/dia para repasse de ajuda humanitária. Além disso, desenvolvi dashboards (SQL) 
+      essenciais para o mapeamento do avanço das áreas afetadas. Também administrei rotinas de backup, 
+      documentação e atualizações em bancos Oracle e PostgreSQL.`,
     },
     {
       empresa: 'UCB – Universidade Católica de Brasília',
@@ -115,7 +124,10 @@ var CV = {
   premiacoes: [
     {
       titulo: '1° Lugar – Hackathon Campus Party Brasília 2022',
-      descricao: 'Lorem ipsum dolor sit amet consectetur adipiscing elit.'
+      descricao: `Projeto vencedor do desafio "Economia Circular e Inclusão Digital". Co-criador do 
+      Remob, um aplicativo conceito que incentiva o descarte de lixo eletrônico em troca de créditos de 
+      mobilidade urbana (BRB). Atuação direta no design de interface (UI) e desenvolvimento do fluxo de 
+      usuário (UX), priorizando a simplicidade de uso e a acessibilidade para o público geral.`
     },
   ],
 };

@@ -267,6 +267,12 @@ ul {
   margin-top: var(--gap-item);
 }
 
+/* exp-item: permite quebra — a proteção é por subcargo */
+.exp-item {
+  page-break-inside: auto;
+  break-inside: auto;
+}
+
 .exp-job {
   font-size: var(--fs-job);
   font-weight: 700;
@@ -301,6 +307,16 @@ ul {
   margin-bottom: 1px;
 }
 
+/* subcargo: unidade mínima de quebra */
+.exp-subcargo {
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+.exp-subcargo+.exp-subcargo {
+  margin-top: var(--gap-item);
+}
+
 .exp-indicadores {
   margin-top: 6px;
   padding: 6px 10px;
@@ -321,10 +337,6 @@ ul {
   color: var(--color-muted);
   line-height: 1.55;
   text-align: justify;
-}
-
-.exp-subcargo+.exp-subcargo {
-  margin-top: var(--gap-item);
 }
 
 /* ============================================================
@@ -493,30 +505,68 @@ ul {
     print-color-adjust: exact !important;
   }
 
-  .edu-item,
-  .exp-item {
+  /* Seções normais não quebram por dentro */
+  .section {
     page-break-inside: avoid;
     break-inside: avoid;
   }
 
+  /* Exceção: seção de experiências permite quebra */
+  section:has(.exp-list),
+  section:has(.exp-section-header) {
+    page-break-inside: auto;
+    break-inside: auto;
+  }
+
+  /* Título de experiências não fica sozinho */
+  section:has(.exp-list) h2,
+  section:has(.exp-section-header) h2 {
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+
+  /* Unidade mínima de quebra: subcargo e cargo único */
+  .exp-subcargo,
+  .exp-item:not(:has(.exp-subcargo)) {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  /* exp-item com múltiplos subcargos: permite quebra entre eles */
+  .exp-item {
+    page-break-inside: auto;
+    break-inside: auto;
+  }
+
+  .exp-indicadores {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  /* Formação não quebra */
+  .edu-item {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  /* Skills não deixa a seção seguinte sozinha */
   .section-skills {
     page-break-after: avoid;
     break-after: avoid;
   }
 
-  section:has(.exp-list) h2 {
-    page-break-after: avoid;
-    break-after: avoid;
-  }
-
-  .exp-section-header {
-    page-break-inside: auto;
-    break-inside: auto;
-  }
-
   .section-title {
     orphans: 4;
     widows: 4;
+  }
+
+  /* Bordas no Firefox */
+  .contact-cell {
+    outline: 1px solid #aaaaaa !important;
+  }
+
+  .skill-tag {
+    outline: 1px solid #aaaaaa !important;
   }
 
   a::after {

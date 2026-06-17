@@ -1,4 +1,4 @@
-const CV = {
+var CV = {
 
     /* ── Header ─────────────────────────────────── */
     nome: 'Eber Lucas Cerqueira Elias',

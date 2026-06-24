@@ -1,5 +1,16 @@
 var CV = {
 
+    /* ── Section Titles ─────────────────────────── */
+    titulos: {
+        resumo: 'Professional Summary',
+        skills: 'Skills',
+        experiencias: 'Experience',
+        formacao: 'Education',
+        certificacoes: 'Certifications',
+        idiomas: 'Languages',
+        premiacoes: 'Awards'
+    },
+
     /* ── Header ─────────────────────────────────── */
     nome: 'Eber Lucas Cerqueira Elias',
     cargo: 'Mid-level DBA | Mid-level BI Analyst',

@@ -111,13 +111,13 @@ function renderCV(cv, root) {
 
   /* RESUMO */
   if (cv.resumo) {
-    const secResumo = section(cv.resumoVisivel !== false ? 'Resumo Profissional' : '');
+    const secResumo = section(cv.resumoVisivel !== false ? (cv.titulos?.resumo || 'Resumo Profissional') : '');
     secResumo.appendChild(el('p', { class: 'section-text' }, cv.resumo.trim()));
     root.appendChild(secResumo);
   }
 
   /* SKILLS */
-  const secSkills = section('Skills', 'section-skills');
+  const secSkills = section(cv.titulos?.skills || 'Skills', 'section-skills');
   const skillRow = el('div', { class: 'skills-row' });
   cv.skills.forEach(s => skillRow.appendChild(el('span', { class: 'skill-tag' }, s)));
   secSkills.appendChild(skillRow);
@@ -127,7 +127,7 @@ function renderCV(cv, root) {
   if (cv.experiencias && cv.experiencias.length > 0) {
     const secExp = el('section', { class: 'section' });
     const expHeader = el('div', { class: 'exp-section-header' });
-    expHeader.appendChild(el('h2', { class: 'section-title' }, 'Experiências'));
+    expHeader.appendChild(el('h2', { class: 'section-title' }, cv.titulos?.experiencias || 'Experiências'));
     expHeader.appendChild(criarExpItem(cv.experiencias[0]));
     secExp.appendChild(expHeader);
 
@@ -142,7 +142,7 @@ function renderCV(cv, root) {
   }
 
   /* FORMAÇÃO */
-  const secForm = section('Formação');
+  const secForm = section(cv.titulos?.formacao || 'Formação');
   cv.formacao.forEach(f => {
     const div = el('div', { class: 'edu-item' });
     div.appendChild(el('p', { class: 'edu-degree' }, f.curso));
@@ -152,12 +152,12 @@ function renderCV(cv, root) {
   root.appendChild(secForm);
 
   /* CERTIFICAÇÕES */
-  const secCert = section('Certificações');
+  const secCert = section(cv.titulos?.certificacoes || 'Certificações');
   secCert.appendChild(plainList(cv.certificacoes));
   root.appendChild(secCert);
 
   /* IDIOMAS */
-  const secLang = section('Idiomas');
+  const secLang = section(cv.titulos?.idiomas || 'Idiomas');
   const langRow = el('div', { class: 'lang-row' });
   cv.idiomas.forEach(l => {
     const div = el('div', { class: 'lang-pair' });
@@ -170,7 +170,7 @@ function renderCV(cv, root) {
   root.appendChild(secLang);
 
   /* PREMIAÇÕES */
-  const secPrem = section('Premiações');
+  const secPrem = section(cv.titulos?.premiacoes || 'Premiações');
   const premList = el('ul', { class: 'plain-list' });
   cv.premiacoes.forEach(p => {
     const li = el('li', {});

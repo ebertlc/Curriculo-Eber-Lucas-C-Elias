@@ -74,10 +74,18 @@ function criarExpItem(exp) {
   }
 
   /* Indicadores — só na versão completa */
-  if (typeof versaoCompleta !== 'undefined' && versaoCompleta && exp.indicadores) {
-    const ind = el('div', { class: 'exp-indicadores' });
-    ind.appendChild(el('p', { class: 'exp-indicadores-text' }, exp.indicadores.trim()));
-    art.appendChild(ind);
+  if (typeof versaoCompleta !== 'undefined' && versaoCompleta) {
+    if (exp.indicadoresItens) {
+      const ind = el('div', { class: 'exp-indicadores' });
+      const ul = el('ul', { class: 'exp-bullets' });
+      exp.indicadoresItens.forEach(item => ul.appendChild(el('li', {}, item)));
+      ind.appendChild(ul);
+      art.appendChild(ind);
+    } else if (exp.indicadores) {
+      const ind = el('div', { class: 'exp-indicadores' });
+      ind.appendChild(el('p', { class: 'exp-indicadores-text' }, exp.indicadores.trim()));
+      art.appendChild(ind);
+    }
   }
 
   return art;
@@ -118,9 +126,19 @@ function renderCV(cv, root) {
 
   /* SKILLS */
   const secSkills = section(cv.titulos?.skills || 'Skills', 'section-skills');
-  const skillRow = el('div', { class: 'skills-row' });
-  cv.skills.forEach(s => skillRow.appendChild(el('span', { class: 'skill-tag' }, s)));
-  secSkills.appendChild(skillRow);
+  if (cv.skills.length > 0 && typeof cv.skills[0] === 'string') {
+    const skillRow = el('div', { class: 'skills-row' });
+    cv.skills.forEach(s => skillRow.appendChild(el('span', { class: 'skill-tag' }, s)));
+    secSkills.appendChild(skillRow);
+  } else if (cv.skills.length > 0) {
+    const skillsContainer = el('div', { class: 'skills-container-text' });
+    cv.skills.forEach(group => {
+      const p = el('p', { class: 'skill-line' });
+      p.insertAdjacentHTML('beforeend', `<strong>${group.titulo}:</strong> ${group.skills.join(', ')}`);
+      skillsContainer.appendChild(p);
+    });
+    secSkills.appendChild(skillsContainer);
+  }
   root.appendChild(secSkills);
 
   /* EXPERIÊNCIAS */
@@ -153,7 +171,20 @@ function renderCV(cv, root) {
 
   /* CERTIFICAÇÕES */
   const secCert = section(cv.titulos?.certificacoes || 'Certificações');
-  secCert.appendChild(plainList(cv.certificacoes));
+  if (cv.certificacoes.length > 0 && typeof cv.certificacoes[0] === 'string') {
+    secCert.appendChild(plainList(cv.certificacoes));
+  } else if (cv.certificacoes.length > 0) {
+    const ul = el('ul', { class: 'plain-list' });
+    cv.certificacoes.forEach(c => {
+      const li = el('li', {});
+      let content = `<strong>${c.titulo}</strong>`;
+      if (c.instituicao) content += ` — ${c.instituicao}`;
+      if (c.carga_horaria) content += ` (${c.carga_horaria})`;
+      li.insertAdjacentHTML('beforeend', content);
+      ul.appendChild(li);
+    });
+    secCert.appendChild(ul);
+  }
   root.appendChild(secCert);
 
   /* IDIOMAS */

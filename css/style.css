@@ -242,6 +242,23 @@ ul {
 /* ============================================================
    SKILLS
    ============================================================ */
+.skills-container-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.skill-line {
+  font-size: var(--fs-body);
+  color: var(--color-muted);
+  line-height: 1.5;
+}
+
+.skill-line strong {
+  color: var(--color-text);
+  font-weight: 700;
+}
+
 .skills-row {
   display: flex;
   flex-wrap: wrap;
@@ -449,6 +466,7 @@ ul {
    ============================================================ */
 @media print {
   :root {
+    --font: Arial, Helvetica, sans-serif !important;
     --fs-name: 26pt;
     --fs-role: 9.5pt;
     --fs-contact: 8.5pt;

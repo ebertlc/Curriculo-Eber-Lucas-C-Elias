@@ -62,8 +62,12 @@ toggle.addEventListener('click', () => {
 document.getElementById('print-btn').addEventListener('click', () => {
   const prev = html.getAttribute('data-theme');
   html.setAttribute('data-theme', 'light');
-  window.print();
-  html.setAttribute('data-theme', prev);
+  
+  // Espera todas as fontes (incluindo os pesos bold) carregarem antes de imprimir
+  document.fonts.ready.then(() => {
+    window.print();
+    html.setAttribute('data-theme', prev);
+  });
 });
 
 /* ── Version Toggle ────────────────────────────────────────── */

@@ -34,7 +34,13 @@ var CV = {
   confiabilidade.`,
 
   /* ── Skills ─────────────────────────────────── */
-  skills: ['SQL', 'Python', 'SQLServer', 'MySQL', 'MongoDB', 'Power BI', 'PL/SQL', 'AWS', 'Linux', 'PostgreSQL', 'Oracle', 'Windows Server'],
+  skills: [
+    { titulo: 'SGBDs', skills: ['SQL Server (avançado)', 'Oracle (intermediário)', 'PostgreSQL (avançado)', 'MySQL (avançado)', 'MongoDB (avançado)'] },
+    { titulo: 'Alta Disponibilidade', skills: ['AlwaysOn (intermediário)', 'Replicação (intermediário)', 'Clustering (básico)', 'Failover (intermediário)'] },
+    { titulo: 'Automação/Scripting', skills: ['SQL (avançado)', 'T-SQL (intermediário)', 'PL/SQL (intermediário)', 'Python (avançado)', 'Bash (intermediário)', 'Ansible (básico)'] },
+    { titulo: 'Backup/Recovery', skills: ['Commvault (intermediário)'] },
+    { titulo: 'Infraestrutura', skills: ['Windows Server (avançado)', 'Linux (intermediário)', 'AWS (básico)'] }
+  ],
 
   /* ── Experiências ───────────────────────────── */
   experiencias: [
@@ -43,62 +49,57 @@ var CV = {
       cargo: 'Residente em Tecnologia da Informação – DBA, Brasília, DF',
       periodo: 'Agosto 2024 – Atual',
       itens: [
-        'Executei mais de 8 migrações de bancos de dados para novos servidores, garantindo zero perda de dados;', 'Gerenciamento de backups/restores manuais (SGBD/Commvault) e snapshots para testes;',
-        'Criação de logins/usuários,gerenciamento d permissões e auditoria de operações;',
-        'Configuração e manutenção de clusters, replicação e AlwaysOn (failover, réplicas);',
-        'Instalação, atualização e criação/desativação de objetos (bancos, jobs, linked servers);',
-        'Criação e execução de scripts (banco, SO, Ansible) para automação de tarefas;',
-        'Desenvolvimento, publicação e manutenção de pacotes ETL;',
-        'Resolução de incidentes e suporte a outras equipes em questões de banco de dados;',
+        'Executei mais de 8 migrações de bancos de dados para novos servidores, garantindo zero perda de dados;',
+        'Gerenciamento de backups/restores manuais (SGBD/Commvault) e snapshots para testes;',
+        'Criei e gerenciei logins/usuários, permissões e auditoria de operações;',
+        'Implementei e mantive clusters AlwaysOn para 5 servidores SQLServer e 1 MongoDB, garantindo alta disponibilidade e failover automático',
+        'Administrei backups/restores via Commvault para 48 servidores SQLServer, MongoDB, MySQL, PostgreSQL, Oracle e Caché, com testes periódicos de restauração;',
+        'Instalei, atualizei e criei/desativei objetos (bancos, jobs, linked servers);',
+        'Automatizei tarefas operacionais via scripts T-SQL, SO e Ansible, reduzindo em 40% o tempo de execução de rotinas manuais',
+        'Desenvolvi e mantive pacotes ETL para integração entre sistemas',
+        'Atuei na resolução de incidentes de banco de dados, atendendo 9 equipes/sistemas;',
         'Exportação/importação de dados e configuração de conexões ODBC;',
-        'Criação e atualização de procedimentos e documentação técnica (Wiki, manuais);',
+        'Criei e mantive documentação técnica (wikis, manuais) para 30 processos, reduzindo dependência de conhecimento individual.',
       ],
-      indicadores: `Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor 
-      incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet consectetur adipiscing 
-      elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`,
     },
     {
       empresa: 'MIDR – Ministério do Desenvolvimento Regional',
-      /* dois cargos na mesma empresa — array de subcargos */
       cargos: [
         {
           cargo: 'Auxiliar De Tratamento de Dados, Brasília, DF',
           periodo: 'Novembro 2023 – Agosto 2024',
           itens: [
-            'Auxílio e gerenciamento nos processos relacionados ao desenvolvimento de sistemas relativos à SEDEC(Secretaria Nacional de Proteção e Defesa Civil);',
-            'Apoio, extração e análise de dados de interesse da secretaria;',
-            'Apoio na elaboração de relatórios e apresentações de dados;',
-            'Manutenção e execução de rotinas de backup e recuperação de dados;',
-            'Criação e execução de scripts de automação de tarefas e atualizações em banco de dados ORACLE e Postgres;',
-            'Criação e manutenção de documentação técnica dos sistemas e processos da SEDEC.',
+            'Apoiei o desenvolvimento e manutenção de sistemas da SEDEC (Secretaria Nacional de Proteção e Defesa Civil), atuando na interface entre área técnica e necessidades da secretaria;',
+            'Extraí e analisei dados em bancos Oracle para subsidiar decisões estratégicas da secretaria;',
+            'Elaborei relatórios e apresentações com dados extraídos diretamente do banco, traduzindo informações técnicas para gestores;',
+            'Mantive rotinas de backup e recuperação de dados em ambientes Oracle, garantindo integridade e disponibilidade das informações;',
+            'Desenvolvi scripts Python e SQL para automação de tarefas operacionais e atualizações em bancos Oracle, reduzindo intervenção manual;',
+            'Documentei processos técnicos e procedimentos operacionais dos sistemas da SEDEC, padronizando rotinas para a equipe.',
+            'Atuei no suporte ao usuário do S2iD (Sistema Integrado de Informações sobre Desastres), desenvolvendo scripts SQL para correções diretas no banco de dados em produção;',
+            'Fui um dos representantes de negócio junto à fábrica de software na criação da nova versão da plataforma, definindo requisitos e homologando entregas;',
+            'Criei um programa Python para geração de arquivos bancários, com atuação crítica durante as enchentes do RS (2024), viabilizando a abertura de mais de 200 contas/dia para repasse de ajuda humanitária;',
+            'Desenvolvi relatórios em excel essenciais para o mapeamento do avanço das áreas afetadas durante as enchentes do RS (2024).',
           ],
         },
         {
           cargo: 'Estagiário TI, Brasília, DF',
           periodo: 'Abril 2023 – Novembro 2023',
           itens: [
-            'Auxílio nos processos relacionados ao desenvolvimento de sistemas relativos à SEDEC;',
-            'Apoio, extração e análise de dados de interesse da secretaria, com acompanhamento direto do responsável técnico.',
+            'Apoiei o time técnico no desenvolvimento e manutenção de sistemas da SEDEC, aprendendo rotinas de administração de dados na prática;',
+            'Realizei extração e análise de dados em bancos Oracle sob supervisão técnica, desenvolvendo base prática em SQL e administração de dados.',
           ],
         },
       ],
-      indicadores: `Atuei no suporte ao usuário do S2iD (Sistema Integrado de Informações sobre Desastres), 
-      desenvolvendo scripts SQL para correções diretas no banco de dados em produção. Fui um dos 
-      representantes de negócio junto à fábrica de software na criação da nova versão da plataforma, 
-      definindo requisitos e homologando entregas. Criei um programa Python para geração de arquivos 
-      bancários, com atuação crítica durante as enchentes do RS (2024), viabilizando a abertura de mais 
-      de 200 contas/dia para repasse de ajuda humanitária. Além disso, desenvolvi dashboards (SQL) 
-      essenciais para o mapeamento do avanço das áreas afetadas. Também administrei rotinas de backup, 
-      documentação e atualizações em bancos Oracle e PostgreSQL.`,
     },
     {
       empresa: 'UCB – Universidade Católica de Brasília',
       cargo: 'Tutor Acadêmico EAD, Taguatinga, DF',
       periodo: 'Outubro 2021 – Janeiro 2022',
-      itens: ['Acompanhamento e motivação da performance e frequência dos alunos no Ambiente Virtual de Aprendizagem;',
-        'Apoio aos discentes no acesso às suas atividades;',
-        'Realização de atendimento e esclarecimento de dúvidas técnicas via e-mail, presencial ou por telefone;',
-        'Manutenção e alimentação das planilhas, relatórios, dashboards e outros documentos solicitados pela gestão.',
+      itens: [
+        'Acompanhei e motivei a performance e frequência dos alunos no Ambiente Virtual de Aprendizagem com 90% de engajamento dos alunos;',
+        'Apoiei os discentes no acesso às suas atividades;',
+        'Realizei atendimento e esclareci dúvidas técnicas via e-mail, presencial ou por telefone;',
+        'Mantive planilhas, relatórios, dashboards e outros documentos solicitados pela gestão.',
       ],
     },
   ],
@@ -113,14 +114,16 @@ var CV = {
 
   /* ── Certificações ──────────────────────────── */
   certificacoes: [
-    'Inteligência Artificial aplicada à Visão Computacional',
-    'MongoDB Overview: Core Concepts and Architecture',
-    'MongoDB Schema Design Patterns and Anti-patterns Skill Badge',
-    'From Relational Model (SQL) to MongoDB\'s Document Model',
-    'MongoDB Overview: Core Concepts and Architecture',
-    'Programação para Internet',
-    'Desenvolvimento Rápido de Aplicações em Python para Cloud, Iot e Bigdata',
-    'Análise de Dados como Suporte à Tomada de Decisão'
+    { titulo: 'MongoDB Overview: Core Concepts and Architecture', instituicao: 'MongoDB', carga_horaria: '4h' },
+    { titulo: 'MongoDB Schema Design Patterns and Anti-patterns Skill Badge', instituicao: 'MongoDB', carga_horaria: '5h' },
+    { titulo: 'From Relational Model (SQL) to MongoDB\'s Document Model', instituicao: 'MongoDB', carga_horaria: '4h' },
+    { titulo: 'Mastering SQL Server', instituicao: 'Udemy', carga_horaria: '96h' },
+    { titulo: 'Inteligência Artificial aplicada à Visão Computacional', instituicao: 'QualiFacti', carga_horaria: '240h' },
+    { titulo: 'Programação de Algoritmos Escaláveis', instituicao: 'Universidade Estácio de Brasília', carga_horaria: '240h' },
+    { titulo: 'Desenvolvimento Rápido de Aplicações em Python para Cloud, Iot e Bigdata', instituicao: 'Universidade Estácio de Brasília', carga_horaria: '320h' },
+    { titulo: 'Programação para Dispositivos Móveis', instituicao: 'Universidade Estácio de Brasília', carga_horaria: '160h' },
+    { titulo: 'Programação para Internet', instituicao: 'Universidade Estácio de Brasília', carga_horaria: '240h' }
+
   ], /* ── Idiomas ────────────────────────────────── */
   idiomas: [
     { idioma: 'Inglês', nivel: 'Conversação' },

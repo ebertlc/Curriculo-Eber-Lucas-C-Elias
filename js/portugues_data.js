@@ -13,7 +13,7 @@ var CV = {
 
   /* ── Cabeçalho ─────────────────────────────── */
   nome: 'Eber Lucas Cerqueira Elias',
-  cargo: 'DBA Pleno | Analista de BI Pleno',
+  cargo: 'DBA Pleno | SQL Server • Oracle • MySQL • PostgreSQL • MongoDB',
 
   contato: [
     /* linha 1 */
@@ -27,9 +27,9 @@ var CV = {
 
   /* ── Resumo ─────────────────────────────────── */
   resumoVisivel: false,
-  resumo: `DBA Pleno com atuação em órgãos do Governo Federal (MPDFT e MIDR), onde desenvolvi sólida experiência em administração de 
-  bancos de dados SQL Server, Oracle e PostgreSQL. Tenho expertise em alta disponibilidade com AlwaysOn e replicação, automação com 
-  scripts T-SQL, PL/SQL e Ansible, gerenciamento de backups com Commvault e desenvolvimento de pacotes ETL. Busco continuar me 
+  resumo: `DBA Pleno com 3 anos de experiência em órgãos do Governo Federal (MPDFT e MIDR), onde desenvolvi sólida experiência em administração de 
+  bancos de dados SQL Server, Oracle, PostgreSQL, MongoDB e MySQL. Tenho expertise em alta disponibilidade com AlwaysOn e replicação, automação com 
+  scripts T-SQL, PL/SQL, Ansible e python, gerenciamento de backups com Commvault e desenvolvimento de pacotes ETL. Busco continuar me 
   aprofundando na administração de dados em ambientes complexos e de alta demanda, contribuindo com segurança, performance e 
   confiabilidade.`,
 
@@ -43,9 +43,8 @@ var CV = {
       cargo: 'Residente em Tecnologia da Informação – DBA, Brasília, DF',
       periodo: 'Agosto 2024 – Atual',
       itens: [
-        'Execução de scripts e migração de bancos (backup/restore) para novos servidores;',
-        'Gerenciamento de backups/restores manuais (SGBD/Commvault) e snapshots para testes;',
-        'Criação de logins/usuários, gerenciamento de permissões e auditoria de operações;',
+        'Executei mais de 8 migrações de bancos de dados para novos servidores, garantindo zero perda de dados;', 'Gerenciamento de backups/restores manuais (SGBD/Commvault) e snapshots para testes;',
+        'Criação de logins/usuários,gerenciamento d permissões e auditoria de operações;',
         'Configuração e manutenção de clusters, replicação e AlwaysOn (failover, réplicas);',
         'Instalação, atualização e criação/desativação de objetos (bancos, jobs, linked servers);',
         'Criação e execução de scripts (banco, SO, Ansible) para automação de tarefas;',
@@ -96,8 +95,7 @@ var CV = {
       empresa: 'UCB – Universidade Católica de Brasília',
       cargo: 'Tutor Acadêmico EAD, Taguatinga, DF',
       periodo: 'Outubro 2021 – Janeiro 2022',
-      itens: [
-        'Acompanhamento e motivação da performance e frequência dos alunos no Ambiente Virtual de Aprendizagem;',
+      itens: ['Acompanhamento e motivação da performance e frequência dos alunos no Ambiente Virtual de Aprendizagem;',
         'Apoio aos discentes no acesso às suas atividades;',
         'Realização de atendimento e esclarecimento de dúvidas técnicas via e-mail, presencial ou por telefone;',
         'Manutenção e alimentação das planilhas, relatórios, dashboards e outros documentos solicitados pela gestão.',
@@ -123,9 +121,7 @@ var CV = {
     'Programação para Internet',
     'Desenvolvimento Rápido de Aplicações em Python para Cloud, Iot e Bigdata',
     'Análise de Dados como Suporte à Tomada de Decisão'
-  ],
-
-  /* ── Idiomas ────────────────────────────────── */
+  ], /* ── Idiomas ────────────────────────────────── */
   idiomas: [
     { idioma: 'Inglês', nivel: 'Conversação' },
     { idioma: 'Espanhol', nivel: 'Intermediário' },

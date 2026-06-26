@@ -1,4 +1,4 @@
-/* ── Language Switching ─────────────────────────────────────── */
+/* â”€â”€ Language Switching â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 const langSelect = document.getElementById('lang-select');
 const savedLang = localStorage.getItem('cv-lang') || 'pt';
 langSelect.value = savedLang;
@@ -22,7 +22,7 @@ function loadLang(lang) {
 if (savedLang !== 'pt') loadLang(savedLang);
 langSelect.addEventListener('change', (e) => loadLang(e.target.value));
 
-/* ── Dropdown Menu ─────────────────────────────────────────── */
+/* â”€â”€ Dropdown Menu â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 const settingsBtn = document.getElementById('settings-btn');
 const dropdownMenu = document.getElementById('dropdown-menu');
 
@@ -37,7 +37,7 @@ document.addEventListener('click', (e) => {
   }
 });
 
-/* ── Theme Toggle ──────────────────────────────────────────── */
+/* â”€â”€ Theme Toggle â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 const html = document.documentElement;
 const toggle = document.getElementById('theme-toggle');
 const icon = document.getElementById('theme-icon');
@@ -58,7 +58,7 @@ toggle.addEventListener('click', () => {
   localStorage.setItem('cv-theme', dark ? 'light' : 'dark');
 });
 
-/* ── Print PDF ─────────────────────────────────────────────── */
+/* â”€â”€ Print PDF â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 document.getElementById('print-btn').addEventListener('click', () => {
   const prev = html.getAttribute('data-theme');
   html.setAttribute('data-theme', 'light');
@@ -70,7 +70,7 @@ document.getElementById('print-btn').addEventListener('click', () => {
   });
 });
 
-/* ── Version Toggle ────────────────────────────────────────── */
+/* â”€â”€ Version Toggle â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 let versaoCompleta = false;
 
 document.getElementById('versao-btn').addEventListener('click', () => {

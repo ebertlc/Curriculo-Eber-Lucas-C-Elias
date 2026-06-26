@@ -1,4 +1,4 @@
-var CV = {
+﻿var CV = {
 
     /* ── Section Titles ─────────────────────────── */
     titulos: {
@@ -13,7 +13,7 @@ var CV = {
 
     /* ── Header ─────────────────────────────────── */
     nome: 'Eber Lucas Cerqueira Elias',
-    cargo: 'Mid-level DBA | SQL Server • Oracle • MySQL • PostgreSQL • MongoDB',
+    cargo: 'Mid-level DBA | SQL Server - Oracle - MySQL - PostgreSQL - MongoDB',
 
     contato: [
         /* row 1 */
@@ -41,9 +41,9 @@ var CV = {
     /* ── Experience ─────────────────────────────── */
     experiencias: [
         {
-            empresa: 'MPDFT – Public Prosecution Office of the Federal District and Territories',
-            cargo: 'Information Technology Resident – DBA, Brasília, DF',
-            periodo: 'August 2024 – Present',
+            empresa: 'MPDFT - Public Prosecution Office of the Federal District and Territories',
+            cargo: 'Information Technology Resident - DBA, Brasília, DF',
+            periodo: 'August 2024 - Present',
             itens: [
                 'Executed over 8 database migrations to new servers, ensuring zero data loss;',
                 'Managed manual backups/restores (DBMS/Commvault) and snapshots for testing environments;',
@@ -59,11 +59,11 @@ var CV = {
             ],
         },
         {
-            empresa: 'MIDR – Ministry of Regional Development',
+            empresa: 'MIDR - Ministry of Regional Development',
             cargos: [
                 {
                     cargo: 'Data Processing Assistant, Brasília, DF',
-                    periodo: 'November 2023 – August 2024',
+                    periodo: 'November 2023 - August 2024',
                     itens: [
                         'Supported the development and maintenance of SEDEC (National Secretariat for Protection and Civil Defense) systems, acting as an interface between the technical area and the secretariat\'s needs;',
                         'Extracted and analyzed data in Oracle databases to support strategic decisions of the secretariat;',
@@ -79,7 +79,7 @@ var CV = {
                 },
                 {
                     cargo: 'IT Intern, Brasília, DF',
-                    periodo: 'April 2023 – November 2023',
+                    periodo: 'April 2023 - November 2023',
                     itens: [
                         'Assisted the technical team in the development and maintenance of SEDEC systems, learning data administration routines in practice;',
                         'Performed data extraction and analysis in Oracle databases under technical supervision, developing a practical foundation in SQL and data administration.',
@@ -88,9 +88,9 @@ var CV = {
             ],
         },
         {
-            empresa: 'UCB – Catholic University of Brasília',
+            empresa: 'UCB - Catholic University of Brasília',
             cargo: 'Academic Tutor (E-Learning), Taguatinga, DF',
-            periodo: 'October 2021 – January 2022',
+            periodo: 'October 2021 - January 2022',
             itens: [
                 'Monitored and motivated student performance and attendance in the Virtual Learning Environment with a 90% student engagement rate;',
                 'Assisted students with access to their activities;',
@@ -131,7 +131,7 @@ var CV = {
     /* ── Awards ─────────────────────────────────── */
     premiacoes: [
         {
-            titulo: '1st Place – Campus Party Brasília 2022 Hackathon',
+            titulo: '1st Place - Campus Party Brasília 2022 Hackathon',
             descricao: `Winning project of the "Circular Economy and Digital Inclusion" challenge. Co-creator of 
       Remob, a concept app that encourages the disposal of electronic waste in exchange for urban mobility credits 
       (BRB). Direct involvement in interface design (UI) and user flow development (UX), prioritizing ease of use 

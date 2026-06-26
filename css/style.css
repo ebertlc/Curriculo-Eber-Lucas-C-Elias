@@ -1,5 +1,5 @@
 /* ============================================================
-   DESIGN TOKENS — mude o tema inteiro aqui
+   DESIGN TOKENS - mude o tema inteiro aqui
    ============================================================ */
 :root {
   --color-bg: #f5f5f5;
@@ -174,6 +174,10 @@ ul {
 /* ============================================================
    HEADER
    ============================================================ */
+.ats-name {
+  display: none;
+}
+
 .hd-name {
   font-size: var(--fs-name);
   font-weight: 700;
@@ -284,7 +288,7 @@ ul {
   margin-top: var(--gap-item);
 }
 
-/* exp-item: permite quebra — a proteção é por subcargo */
+/* exp-item: permite quebra - a proteção é por subcargo */
 .exp-item {
   page-break-inside: auto;
   break-inside: auto;
@@ -379,19 +383,14 @@ ul {
 /* ============================================================
    CERTIFICATIONS / AWARDS
    ============================================================ */
-.plain-list li {
+.plain-list .li-item {
   font-size: var(--fs-body);
   color: var(--color-muted);
-  padding-left: 12px;
-  position: relative;
   margin-bottom: 2px;
 }
 
-.plain-list li::before {
-  content: '•';
-  position: absolute;
-  left: 0;
-  color: var(--color-text);
+.cert-detalhe {
+  color: var(--color-muted);
 }
 
 /* ============================================================
@@ -412,14 +411,623 @@ ul {
 .lang-name {
   font-size: var(--fs-body);
   font-weight: 700;
-  padding-left: 14px;
-  position: relative;
 }
 
-.lang-name::before {
-  content: '•';
+.lang-level {
+  font-size: var(--fs-small);
+  color: var(--color-muted);
+  padding-left: 14px;
+}
+
+/* ============================================================
+   PREMIATIONS
+   ============================================================ */
+.prem-desc {
+  display: block;
+  font-size: var(--fs-small);
+  color: var(--color-muted);
+  margin-top: 2px;
+  padding-left: 0;
+  text-align: justify;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 620px) {
+  :root {
+    --page-h: 20px;
+    --page-v: 24px;
+    --fs-name: 22px;
+  }
+
+  .page {
+    margin: 0;
+    box-shadow: none;
+  }
+
+  .ui-btn span {
+    display: none;
+  }
+}
+
+/* ============================================================
+   PRINT
+   ============================================================ */
+@media print {
+  :root {
+    --font: 'Inter', Arial, Helvetica, sans-serif !important;
+    --fs-name: 26pt;
+    --fs-role: 9.5pt;
+    --fs-contact: 8.5pt;
+    --fs-section: 10pt;
+    --fs-job: 8.5pt;
+    --fs-body: 8pt;
+    --fs-small: 8.5pt;
+    --gap-section: 10pt;
+    --gap-item: 8pt;
+    --page-h: 0;
+    --page-v: 0;
+    --color-bg: #fff;
+    --color-surface: #fff;
+    --color-text: #000;
+    --color-muted: #444;
+    --color-date: #444;
+    --color-divider: #666;
+    --color-tag-border: #666;
+  }
+
+  [data-theme="dark"] {
+    --color-bg: #fff;
+    --color-surface: #fff;
+    --color-text: #000;
+    --color-muted: #444;
+    --color-date: #444;
+    --color-divider: #666;
+    --color-tag-border: #666;
+  }
+
+  @page {
+    size: A4;
+    margin: 12mm 13mm;
+  }
+
+  html,
+  body {
+    background: white !important;
+  }
+
+  .ui-bar {
+    display: none !important;
+  }
+
+  .page {
+    margin: 0 !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    max-width: 100% !important;
+  }
+
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    letter-spacing: normal !important;
+  }
+
+  .hd-name {
+    font-size: var(--fs-name) !important;
+  }
+
+  /* Nome em texto puro e seguro (10pt, font-weight 400) para o ATS ler perfeitamente */
+  .ats-name {
+    display: block !important;
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 10pt !important;
+    font-weight: 400 !important;
+    color: transparent !important;
+    line-height: 1.1;
+    z-index: -1;
+  }
+
+  .exp-job {
+    text-transform: none !important;
+  }
+  /* Ocultar SVGs na impressão para evitar criação de Type3 Fonts no PDF */
+  svg {
+    display: none !important;
+  }
+
+  /* Seções normais não quebram por dentro */
+  .section {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  /* Exceção: seção de experiências permite quebra */
+  .section:has(.exp-list),
+  .section:has(.exp-section-header) {
+    page-break-inside: auto;
+    break-inside: auto;
+  }
+
+  /* Título de experiências não fica sozinho */
+  .section:has(.exp-list) .section-title,
+  .section:has(.exp-section-header) .section-title {
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+
+  /* Unidade mínima de quebra: subcargo e cargo único */
+  .exp-subcargo,
+  .exp-item:not(:has(.exp-subcargo)) {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  /* exp-item com múltiplos subcargos: permite quebra entre eles */
+  .exp-item {
+    page-break-inside: auto;
+    break-inside: auto;
+  }
+
+  .exp-indicadores {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  /* Formação não quebra */
+  .edu-item {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  /* Skills não deixa a seção seguinte sozinha */
+  .section-skills {
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+
+  .section-title {
+    orphans: 4;
+    widows: 4;
+  }
+
+  /* Bordas no Firefox */
+  .contact-cell {
+    outline: 1px solid #aaaaaa !important;
+  }
+
+  .skill-tag {
+    outline: 1px solid #aaaaaa !important;
+  }
+
+  a::after {
+    content: none !important;
+  }
+}
+
+/* ============================================================
+   DESIGN TOKENS - mude o tema inteiro aqui
+   ============================================================ */
+:root {
+  --color-bg: #f5f5f5;
+  --color-surface: #ffffff;
+  --color-text: #111111;
+  --color-muted: #555555;
+  --color-date: #555555;
+  --color-divider: #cccccc;
+  --color-tag-border: #aaaaaa;
+
+  --font: 'Inter', Arial, sans-serif;
+
+  --fs-name: 34px;
+  --fs-role: 12.5px;
+  --fs-contact: 11px;
+  --fs-section: 13px;
+  --fs-job: 11px;
+  --fs-body: 10px;
+  --fs-small: 11px;
+
+  --gap-section: 13px;
+  --gap-item: 10px;
+  --page-h: 48px;
+  --page-v: 36px;
+}
+
+[data-theme="dark"] {
+  --color-bg: #0f172a;
+  --color-surface: #1e293b;
+  --color-text: #f1f5f9;
+  --color-muted: #94a3b8;
+  --color-date: #94a3b8;
+  --color-divider: #334155;
+  --color-tag-border: #475569;
+}
+
+/* ============================================================
+   RESET
+   ============================================================ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font);
+  font-size: var(--fs-body);
+  background: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.55;
+  transition: background 0.25s, color 0.25s;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+ul {
+  list-style: none;
+}
+
+/* ============================================================
+   UI CONTROLS
+   ============================================================ */
+.ui-bar {
+  position: fixed;
+  top: 14px;
+  right: 14px;
+  display: flex;
+  gap: 8px;
+  z-index: 200;
+}
+
+.ui-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 13px;
+  border-radius: 999px;
+  border: 1px solid var(--color-divider);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-family: var(--font);
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  transition: box-shadow 0.15s;
+}
+
+.ui-btn:hover {
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.gear-btn {
+  padding: 8px;
+  border-radius: 50%;
+}
+
+.dropdown-content {
+  display: none;
   position: absolute;
-  left: 0;
+  right: 0;
+  top: 100%;
+  margin-top: 8px;
+  flex-direction: column;
+  gap: 6px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-divider);
+  border-radius: 12px;
+  padding: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  min-width: 140px;
+}
+
+.dropdown-content.show {
+  display: flex;
+}
+
+.dropdown-content .ui-btn {
+  width: 100%;
+  justify-content: flex-start;
+  border: none;
+  box-shadow: none;
+  background: transparent;
+}
+
+.dropdown-content .ui-btn:hover {
+  background: var(--color-bg);
+}
+
+#lang-select {
+  appearance: none;
+  -webkit-appearance: none;
+  padding-right: 20px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 6px center;
+}
+
+#lang-select option {
+  background: var(--color-surface);
+  color: var(--color-text);
+  border-radius: 0;
+  padding: 4px 8px;
+}
+
+/* ============================================================
+   PAGE SHELL
+   ============================================================ */
+.page {
+  max-width: 780px;
+  margin: 32px auto;
+  padding: var(--page-v) var(--page-h);
+  background: var(--color-surface);
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
+}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+.print-decoy {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0.01;
+  font-weight: 700;
+  font-size: 1px;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.hd-name {
+  font-size: var(--fs-name);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+}
+
+.hd-role {
+  font-size: var(--fs-role);
+  font-weight: 400;
+  color: var(--color-muted);
+  margin-top: 3px;
+}
+
+.contact-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 2px;
+  gap: 2px 0;
+}
+
+.contact-cell {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: var(--fs-contact);
+  color: var(--color-muted);
+  background: var(--color-bg);
+  border: 1px solid var(--color-divider);
+  padding: 3px 10px;
+  margin-right: 6px;
+  margin-bottom: 5px;
+  white-space: nowrap;
+}
+
+.contact-cell svg {
+  flex-shrink: 0;
+  opacity: 0.65;
+}
+
+/* ============================================================
+   SECTIONS
+   ============================================================ */
+.section {
+  margin-top: var(--gap-section);
+}
+
+.section-title {
+  font-size: var(--fs-section);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  display: inline-block;
+  padding-bottom: 3px;
+  border-bottom: 2.5px solid var(--color-date);
+  margin-bottom: 9px;
+}
+
+.section-text {
+  font-size: var(--fs-body);
+  color: var(--color-muted);
+  line-height: 1.6;
+  text-align: justify;
+}
+
+/* ============================================================
+   SKILLS
+   ============================================================ */
+.skills-container-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.skill-line {
+  font-size: var(--fs-body);
+  color: var(--color-muted);
+  line-height: 1.5;
+}
+
+.skill-line strong {
+  color: var(--color-text);
+  font-weight: 700;
+}
+
+.skills-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px 6px;
+}
+
+.skill-tag {
+  font-size: var(--fs-small);
+  padding: 2px 10px;
+  border: 1px solid var(--color-tag-border);
+  display: inline-block;
+  color: var(--color-text);
+  background: transparent;
+}
+
+/* ============================================================
+   EXPERIENCE
+   ============================================================ */
+.exp-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-item);
+  margin-top: var(--gap-item);
+}
+
+/* exp-item: permite quebra - a proteção é por subcargo */
+.exp-item {
+  page-break-inside: auto;
+  break-inside: auto;
+}
+
+.exp-job {
+  font-size: var(--fs-job);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  display: block;
+}
+
+.exp-company {
+  font-size: var(--fs-small);
+  color: var(--color-muted);
+  font-style: italic;
+  margin-top: 1px;
+  margin-bottom: 5px;
+}
+
+.exp-date {
+  font-style: normal;
+  font-weight: 400;
+  color: var(--color-date);
+}
+
+.exp-bullets {
+  padding-left: 14px;
+  list-style: disc;
+  color: var(--color-muted);
+}
+
+.exp-bullets li {
+  font-size: var(--fs-body);
+  line-height: 1.5;
+  margin-bottom: 1px;
+}
+
+/* subcargo: unidade mínima de quebra */
+.exp-subcargo {
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+.exp-subcargo+.exp-subcargo {
+  margin-top: var(--gap-item);
+}
+
+.exp-indicadores {
+  margin-top: 6px;
+  padding: 6px 10px;
+  border-left: 2px solid var(--color-divider);
+}
+
+.exp-indicadores-title {
+  font-size: var(--fs-small);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-text);
+  margin-bottom: 3px;
+}
+
+.exp-indicadores-text {
+  font-size: var(--fs-small);
+  color: var(--color-muted);
+  line-height: 1.55;
+  text-align: justify;
+}
+
+/* ============================================================
+   EDUCATION
+   ============================================================ */
+.edu-degree {
+  font-size: var(--fs-job);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.edu-institution {
+  font-size: var(--fs-small);
+  color: var(--color-muted);
+  margin-top: 1px;
+}
+
+.edu-item+.edu-item {
+  margin-top: 7px;
+}
+
+/* ============================================================
+   CERTIFICATIONS / AWARDS
+   ============================================================ */
+.plain-list .li-item {
+  font-size: var(--fs-body);
+  color: var(--color-muted);
+  margin-bottom: 2px;
+}
+
+.cert-detalhe {
+  color: var(--color-muted);
+}
+
+/* ============================================================
+   LANGUAGES
+   ============================================================ */
+.lang-row {
+  display: flex;
+  gap: 0 60px;
+  flex-wrap: wrap;
+}
+
+.lang-pair {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.lang-name {
+  font-size: var(--fs-body);
   font-weight: 700;
 }
 
@@ -521,6 +1129,13 @@ ul {
   * {
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
+    letter-spacing: normal !important;
+    font-family: Arial, Helvetica, sans-serif !important;
+  }
+
+  /* Ocultar SVGs na impressão para evitar criação de Type3 Fonts no PDF */
+  svg {
+    display: none !important;
   }
 
   /* Seções normais não quebram por dentro */
@@ -530,15 +1145,15 @@ ul {
   }
 
   /* Exceção: seção de experiências permite quebra */
-  section:has(.exp-list),
-  section:has(.exp-section-header) {
+  .section:has(.exp-list),
+  .section:has(.exp-section-header) {
     page-break-inside: auto;
     break-inside: auto;
   }
 
   /* Título de experiências não fica sozinho */
-  section:has(.exp-list) h2,
-  section:has(.exp-section-header) h2 {
+  .section:has(.exp-list) .section-title,
+  .section:has(.exp-section-header) .section-title {
     page-break-after: avoid;
     break-after: avoid;
   }

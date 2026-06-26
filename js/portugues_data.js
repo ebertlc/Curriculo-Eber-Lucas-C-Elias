@@ -13,7 +13,7 @@ var CV = {
 
   /* ── Cabeçalho ─────────────────────────────── */
   nome: 'Eber Lucas Cerqueira Elias',
-  cargo: 'DBA Pleno | SQL Server • Oracle • MySQL • PostgreSQL • MongoDB',
+  cargo: 'DBA Pleno | SQL Server - Oracle - MySQL - PostgreSQL - MongoDB',
 
   contato: [
     /* linha 1 */
@@ -45,9 +45,9 @@ var CV = {
   /* ── Experiências ───────────────────────────── */
   experiencias: [
     {
-      empresa: 'MPDFT – Ministério Público do Distrito Federal e Territórios',
-      cargo: 'Residente em Tecnologia da Informação – DBA, Brasília, DF',
-      periodo: 'Agosto 2024 – Atual',
+      empresa: 'MPDFT - Ministério Público do Distrito Federal e Territórios',
+      cargo: 'Residente em Tecnologia da Informação - DBA, Brasília, DF',
+      periodo: 'Agosto 2024 - Atual',
       itens: [
         'Executei mais de 8 migrações de bancos de dados para novos servidores, garantindo zero perda de dados;',
         'Gerenciamento de backups/restores manuais (SGBD/Commvault) e snapshots para testes;',
@@ -63,11 +63,11 @@ var CV = {
       ],
     },
     {
-      empresa: 'MIDR – Ministério do Desenvolvimento Regional',
+      empresa: 'MIDR - Ministério do Desenvolvimento Regional',
       cargos: [
         {
           cargo: 'Auxiliar De Tratamento de Dados, Brasília, DF',
-          periodo: 'Novembro 2023 – Agosto 2024',
+          periodo: 'Novembro 2023 - Agosto 2024',
           itens: [
             'Apoiei o desenvolvimento e manutenção de sistemas da SEDEC (Secretaria Nacional de Proteção e Defesa Civil), atuando na interface entre área técnica e necessidades da secretaria;',
             'Extraí e analisei dados em bancos Oracle para subsidiar decisões estratégicas da secretaria;',
@@ -83,7 +83,7 @@ var CV = {
         },
         {
           cargo: 'Estagiário TI, Brasília, DF',
-          periodo: 'Abril 2023 – Novembro 2023',
+          periodo: 'Abril 2023 - Novembro 2023',
           itens: [
             'Apoiei o time técnico no desenvolvimento e manutenção de sistemas da SEDEC, aprendendo rotinas de administração de dados na prática;',
             'Realizei extração e análise de dados em bancos Oracle sob supervisão técnica, desenvolvendo base prática em SQL e administração de dados.',
@@ -92,9 +92,9 @@ var CV = {
       ],
     },
     {
-      empresa: 'UCB – Universidade Católica de Brasília',
+      empresa: 'UCB - Universidade Católica de Brasília',
       cargo: 'Tutor Acadêmico EAD, Taguatinga, DF',
-      periodo: 'Outubro 2021 – Janeiro 2022',
+      periodo: 'Outubro 2021 - Janeiro 2022',
       itens: [
         'Acompanhei e motivei a performance e frequência dos alunos no Ambiente Virtual de Aprendizagem com 90% de engajamento dos alunos;',
         'Apoiei os discentes no acesso às suas atividades;',
@@ -133,7 +133,7 @@ var CV = {
   /* ── Premiações ─────────────────────────────── */
   premiacoes: [
     {
-      titulo: '1° Lugar – Hackathon Campus Party Brasília 2022',
+      titulo: '1° Lugar - Hackathon Campus Party Brasília 2022',
       descricao: `Projeto vencedor do desafio "Economia Circular e Inclusão Digital". Co-criador do 
       Remob, um aplicativo conceito que incentiva o descarte de lixo eletrônico em troca de créditos de 
       mobilidade urbana (BRB). Atuação direta no design de interface (UI) e desenvolvimento do fluxo de 

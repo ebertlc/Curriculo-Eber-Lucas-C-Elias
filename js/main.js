@@ -1,4 +1,4 @@
-/* ── Ícones SVG inline ──────────────────────────────────────── */
+/* â”€â”€ Ãcones SVG inline â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 const ICONS = {
   phone: `<svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L9.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>`,
   mail: `<svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>`,
@@ -7,7 +7,7 @@ const ICONS = {
   github: `<svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>`,
 };
 
-/* ── Helpers ────────────────────────────────────────────────── */
+/* â”€â”€ Helpers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 function el(tag, attrs = {}, ...children) {
   const e = document.createElement(tag);
   for (const [k, v] of Object.entries(attrs)) {
@@ -22,26 +22,26 @@ function el(tag, attrs = {}, ...children) {
 }
 
 function section(titulo, className = '') {
-  const sec = el('section', { class: 'section' + (className ? ' ' + className : '') });
+  const sec = el('div', { class: 'section' + (className ? ' ' + className : '') });
   if (titulo) {
-    sec.appendChild(el('h2', { class: 'section-title' }, titulo));
+    sec.appendChild(el('div', { class: 'section-title' }, titulo));
   }
   return sec;
 }
 
 function plainList(itens) {
-  const ul = el('ul', { class: 'plain-list' });
-  itens.forEach(t => ul.appendChild(el('li', {}, t)));
+  const ul = el('div', { class: 'plain-list' });
+  itens.forEach(t => ul.appendChild(el('div', { class: 'li-item' }, `- ${t}`)));
   return ul;
 }
 
 function criarExpItem(exp) {
-  const art = el('article', { class: 'exp-item' });
+  const art = el('div', { class: 'exp-item' });
 
-  /* Empresa como título do grupo */
+  /* Empresa como tÃ­tulo do grupo */
   art.appendChild(el('span', { class: 'exp-job' }, exp.empresa));
 
-  /* Caso simples: cargo único */
+  /* Caso simples: cargo Ãºnico */
   if (exp.cargo) {
     const company = el('p', { class: 'exp-company' });
     company.insertAdjacentHTML('beforeend',
@@ -49,12 +49,12 @@ function criarExpItem(exp) {
     );
     art.appendChild(company);
 
-    const ul = el('ul', { class: 'exp-bullets' });
-    exp.itens.forEach(item => ul.appendChild(el('li', {}, item)));
+    const ul = el('div', { class: 'exp-bullets' });
+    exp.itens.forEach(item => ul.appendChild(el('div', { class: 'li-item' }, item)));
     art.appendChild(ul);
   }
 
-  /* Caso múltiplos cargos na mesma empresa */
+  /* Caso mÃºltiplos cargos na mesma empresa */
   if (exp.cargos) {
     exp.cargos.forEach(c => {
       const subcargo = el('div', { class: 'exp-subcargo' });
@@ -65,20 +65,20 @@ function criarExpItem(exp) {
       );
       subcargo.appendChild(company);
 
-      const ul = el('ul', { class: 'exp-bullets' });
-      c.itens.forEach(item => ul.appendChild(el('li', {}, item)));
+      const ul = el('div', { class: 'exp-bullets' });
+      c.itens.forEach(item => ul.appendChild(el('div', { class: 'li-item' }, item)));
       subcargo.appendChild(ul);
 
       art.appendChild(subcargo);
     });
   }
 
-  /* Indicadores — só na versão completa */
+  /* Indicadores - sÃ³ na versÃ£o completa */
   if (typeof versaoCompleta !== 'undefined' && versaoCompleta) {
     if (exp.indicadoresItens) {
       const ind = el('div', { class: 'exp-indicadores' });
-      const ul = el('ul', { class: 'exp-bullets' });
-      exp.indicadoresItens.forEach(item => ul.appendChild(el('li', {}, item)));
+      const ul = el('div', { class: 'exp-bullets' });
+      exp.indicadoresItens.forEach(item => ul.appendChild(el('div', { class: 'li-item' }, item)));
       ind.appendChild(ul);
       art.appendChild(ind);
     } else if (exp.indicadores) {
@@ -91,15 +91,21 @@ function criarExpItem(exp) {
   return art;
 }
 
-/* ── Renderizador principal ─────────────────────────────────── */
+/* â”€â”€ Renderizador principal â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 function renderCV(cv, root) {
 
-  /* CABEÇALHO */
-  const header = el('header');
-  header.appendChild(el('h1', { class: 'hd-name' }, cv.nome));
+  /* CABEÃ‡ALHO */
+  const header = el('div', { class: 'header-container' });
+  
+  // Nome seguro para ATS: texto pequeno (10pt) e normal (400) que o parser lÃª com perfeiÃ§Ã£o
+  header.appendChild(el('div', { class: 'ats-name' }, cv.nome));
+  
+  // Nome visual: texto grande que serÃ¡ rasterizado no PDF para o ATS ignorar e nÃ£o bugar
+  header.appendChild(el('div', { class: 'hd-name', 'aria-hidden': 'true' }, cv.nome));
+  
   header.appendChild(el('p', { class: 'hd-role' }, cv.cargo));
 
-  const addr = el('address', { style: 'font-style:normal;' });
+  const addr = el('div', { class: 'address-container', style: 'font-style:normal;' });
   const row1 = el('div', { class: 'contact-row' });
   const row2 = el('div', { class: 'contact-row' });
   cv.contato.forEach((c, i) => {
@@ -141,11 +147,11 @@ function renderCV(cv, root) {
   }
   root.appendChild(secSkills);
 
-  /* EXPERIÊNCIAS */
+  /* EXPERIÃŠNCIAS */
   if (cv.experiencias && cv.experiencias.length > 0) {
-    const secExp = el('section', { class: 'section' });
+    const secExp = el('div', { class: 'section' });
     const expHeader = el('div', { class: 'exp-section-header' });
-    expHeader.appendChild(el('h2', { class: 'section-title' }, cv.titulos?.experiencias || 'Experiências'));
+    expHeader.appendChild(el('div', { class: 'section-title' }, cv.titulos?.experiencias || 'ExperiÃªncias'));
     expHeader.appendChild(criarExpItem(cv.experiencias[0]));
     secExp.appendChild(expHeader);
 
@@ -159,8 +165,8 @@ function renderCV(cv, root) {
     root.appendChild(secExp);
   }
 
-  /* FORMAÇÃO */
-  const secForm = section(cv.titulos?.formacao || 'Formação');
+  /* FORMAÃ‡ÃƒO */
+  const secForm = section(cv.titulos?.formacao || 'FormaÃ§Ã£o');
   cv.formacao.forEach(f => {
     const div = el('div', { class: 'edu-item' });
     div.appendChild(el('p', { class: 'edu-degree' }, f.curso));
@@ -169,18 +175,26 @@ function renderCV(cv, root) {
   });
   root.appendChild(secForm);
 
-  /* CERTIFICAÇÕES */
-  const secCert = section(cv.titulos?.certificacoes || 'Certificações');
+  /* CERTIFICAÃ‡Ã•ES */
+  const secCert = section(cv.titulos?.certificacoes || 'CertificaÃ§Ãµes');
   if (cv.certificacoes.length > 0 && typeof cv.certificacoes[0] === 'string') {
     secCert.appendChild(plainList(cv.certificacoes));
   } else if (cv.certificacoes.length > 0) {
-    const ul = el('ul', { class: 'plain-list' });
+    const ul = el('div', { class: 'plain-list' });
     cv.certificacoes.forEach(c => {
-      const li = el('li', {});
-      let content = `<strong>${c.titulo}</strong>`;
-      if (c.instituicao) content += ` — ${c.instituicao}`;
-      if (c.carga_horaria) content += ` (${c.carga_horaria})`;
-      li.insertAdjacentHTML('beforeend', content);
+      const li = el('div', { class: 'li-item' });
+
+      const titulo = el('strong', {}, `- ${c.titulo}`);
+      li.appendChild(titulo);
+
+      let detalhe = '';
+      if (c.instituicao) detalhe += ` - ${c.instituicao}`;
+      if (c.carga_horaria) detalhe += ` (${c.carga_horaria})`;
+      if (detalhe) {
+        const span = el('span', { class: 'cert-detalhe' }, detalhe);
+        li.appendChild(span);
+      }
+
       ul.appendChild(li);
     });
     secCert.appendChild(ul);
@@ -192,24 +206,25 @@ function renderCV(cv, root) {
   const langRow = el('div', { class: 'lang-row' });
   cv.idiomas.forEach(l => {
     const div = el('div', { class: 'lang-pair' });
-    div.insertAdjacentHTML('beforeend',
-      `<span class="lang-name">${l.idioma}</span><span class="lang-level">${l.nivel}</span>`
-    );
+    const nome = el('span', { class: 'lang-name' }, `- ${l.idioma}`);
+    const nivel = el('span', { class: 'lang-level' }, l.nivel);
+    div.appendChild(nome);
+    div.appendChild(nivel);
     langRow.appendChild(div);
   });
   secLang.appendChild(langRow);
   root.appendChild(secLang);
 
-  /* PREMIAÇÕES */
-  const secPrem = section(cv.titulos?.premiacoes || 'Premiações');
-  const premList = el('ul', { class: 'plain-list' });
+  /* PREMIAÃ‡Ã•ES */
+  const secPrem = section(cv.titulos?.premiacoes || 'PremiaÃ§Ãµes');
+  const premList = el('div', { class: 'plain-list' });
   cv.premiacoes.forEach(p => {
-    const li = el('li', {});
-    li.insertAdjacentHTML('beforeend', `<strong>${p.titulo}</strong>`);
+    const li = el('div', { class: 'li-item' });
+    li.appendChild(document.createTextNode('- '));
+    li.appendChild(el('strong', {}, p.titulo));
     if (typeof versaoCompleta !== 'undefined' && versaoCompleta && p.descricao) {
-      li.insertAdjacentHTML('beforeend',
-        `<span class="prem-desc">${p.descricao}</span>`
-      );
+      const desc = el('span', { class: 'prem-desc' }, p.descricao);
+      li.appendChild(desc);
     }
     premList.appendChild(li);
   });
